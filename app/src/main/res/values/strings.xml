@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">Instagram</string>
+    <string name="input_login">Phone number, email or username</string>
+    <string name="log_in">Log in</string>
+    <string name="password">Password</string>
+    <string name="login_with_facebook">Log in with Facebook</string>
+    <string name="forgot_login">Forgot your login details? <b><font color="#FF00376B">Get help logging in.</font></b></string>
+    <string name="signup">Don\'t have an account? <b><font color="#FF00376B">Sign up.</font></b></string>
+    <string name="or">OR</string>
 </resources>

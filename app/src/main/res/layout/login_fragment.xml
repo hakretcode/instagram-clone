@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@id/signup"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="vertical"
+            tools:context=".start.InitialActivity">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                app:srcCompat="@drawable/logo" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/InputLayoutForm"
+                android:layout_marginStart="28dp"
+                android:layout_marginTop="25dp"
+                android:layout_marginEnd="28dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    style="@style/InputForm"
+                    android:hint="@string/input_login" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/password_toggle"
+                style="@style/InputLayoutForm"
+                android:layout_marginStart="28dp"
+                android:layout_marginEnd="28dp"
+                app:passwordToggleEnabled="true">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    style="@style/InputForm"
+                    android:hint="@string/password" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.button.MaterialButton
+                style="@style/ButtonForm"
+                android:layout_marginStart="28dp"
+                android:layout_marginEnd="28dp"
+                android:text="@string/log_in" />
+
+            <com.google.android.material.button.MaterialButton
+                style="@style/ButtonForm"
+                android:layout_marginStart="28dp"
+                android:layout_marginEnd="28dp"
+                android:text="@string/forgot_login"
+                android:textColor="@color/gray_text"
+                android:textSize="@dimen/small_text"
+                app:backgroundTint="@android:color/transparent" />
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="28dp"
+                android:layout_marginEnd="28dp">
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_gravity="center_vertical"
+                    android:background="@color/gray_border" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:background="@color/white"
+                    android:paddingStart="8dp"
+                    android:paddingEnd="8dp"
+                    android:text="@string/or" />
+
+            </FrameLayout>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/button_facebook"
+                style="@style/ButtonFbForm"
+                android:layout_marginStart="28dp"
+                android:layout_marginEnd="28dp"
+                android:backgroundTint="@android:color/transparent"
+                android:text="@string/login_with_facebook"
+                android:textColor="@color/blue"
+                app:icon="@drawable/facebook_button"
+                app:iconGravity="textStart"
+                app:iconTint="@color/blue" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+    </ScrollView>
+
+    <FrameLayout
+        android:id="@+id/signup"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/gray_border" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:padding="16dp"
+            android:text="@string/signup"
+            android:textColor="@color/gray_text"
+            android:textSize="@dimen/small_text" />
+
+    </FrameLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
