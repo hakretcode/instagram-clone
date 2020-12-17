@@ -18,7 +18,8 @@
     </style>
 
     <style name="ButtonFbForm" parent="ButtonForm">
-        <item name="backgroundTint">@color/bg_button</item>
+        <item name="android:textColor">@color/blue</item>
+        <item name="backgroundTint">@android:color/transparent</item>
     </style>
 
     <style name="InputLayoutForm" parent="ContainerForm">

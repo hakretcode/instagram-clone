@@ -66,6 +66,8 @@
             android:layout_marginStart="28dp"
             android:layout_marginEnd="28dp"
             android:layout_marginBottom="28dp"
-            android:text="@string/contacts_text" />
+            android:text="@string/contacts_text"
+            android:textColor="@color/gray_text"
+            android:textSize="@dimen/small_text" />
     </FrameLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

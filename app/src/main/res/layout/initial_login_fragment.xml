@@ -81,9 +81,7 @@
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/button_facebook"
                 style="@style/ButtonFbForm"
-                android:backgroundTint="@android:color/transparent"
                 android:text="@string/login_with_facebook"
-                android:textColor="@color/blue"
                 app:icon="@drawable/facebook_button"
                 app:iconGravity="textStart"
                 app:iconTint="@color/blue" />

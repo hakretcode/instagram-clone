@@ -14,4 +14,8 @@
     <string name="full_name">Full name</string>
     <string name="without_contacts">Continue Without Syncing Contacts</string>
     <string name="contacts_text">Your contacts will be periodically synced and stored on Instagram servers to help you and others find friends, and to help us provide a better service. To remove contacts, go to Settings and disconnect. <b>Learn More</b></string>
+    <string name="welcome">WELCOME TO INSTAGRAM,\n%s</string>
+    <string name="welcome_about">Find people to follow and start sharing photos, You can change your username anytime.</string>
+    <string name="change_username">Change username</string>
+    <string name="condition">By clicking Next, you agree to our <b><font color="#FF00376B">Terms, Data Policy</font></b> and <b><font color="#FF00376B">Cookies Policy.</font></b></string>
 </resources>
