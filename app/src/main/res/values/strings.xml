@@ -7,4 +7,11 @@
     <string name="forgot_login">Forgot your login details? <b><font color="#FF00376B">Get help logging in.</font></b></string>
     <string name="signup">Don\'t have an account? <b><font color="#FF00376B">Sign up.</font></b></string>
     <string name="or">OR</string>
+    <string name="login">Already have an account? <b><font color="#FF00376B">Log in.</font></b></string>
+    <string name="email">Email</string>
+    <string name="next">Next</string>
+    <string name="name_and_password">name and password</string>
+    <string name="full_name">Full name</string>
+    <string name="without_contacts">Continue Without Syncing Contacts</string>
+    <string name="contacts_text">Your contacts will be periodically synced and stored on Instagram servers to help you and others find friends, and to help us provide a better service. To remove contacts, go to Settings and disconnect. <b>Learn More</b></string>
 </resources>

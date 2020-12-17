@@ -6,8 +6,8 @@
 
     <fragment
         android:id="@+id/TODO"
-        android:name="com.igorlb.instagram.start.fragment.Login"
+        android:name="com.igorlb.instagram.start.fragment.RegisterSecond"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:layout="@layout/login_fragment" />
+        tools:layout="@layout/initial_login_fragment" />
 </FrameLayout>

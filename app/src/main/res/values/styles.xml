@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="ButtonForm">
+    <style name="ContainerForm">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">28dp</item>
+        <item name="android:layout_marginEnd">28dp</item>
+    </style>
+
+    <style name="ButtonForm" parent="ContainerForm">
         <item name="android:insetTop">0dp</item>
         <item name="android:insetBottom">0dp</item>
         <item name="android:letterSpacing">0</item>
@@ -16,9 +21,7 @@
         <item name="backgroundTint">@color/bg_button</item>
     </style>
 
-    <style name="InputLayoutForm">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
+    <style name="InputLayoutForm" parent="ContainerForm">
         <item name="boxStrokeWidth">0dp</item>
         <item name="boxStrokeWidthFocused">0dp</item>
         <item name="errorEnabled">true</item>
@@ -31,7 +34,17 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:background">@drawable/bg_input</item>
         <item name="android:padding">14.5dp</item>
+        <item name="android:paddingStart">16dp</item>
         <item name="android:textSize">@dimen/medium_text</item>
+    </style>
+
+    <style name="TextForm" parent="ContainerForm">
+        <item name="android:gravity">center</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">center_horizontal</item>
+        <item name="android:textColor">@color/gray_text</item>
+        <item name="android:textSize">@dimen/small_text</item>
     </style>
 
 </resources>
