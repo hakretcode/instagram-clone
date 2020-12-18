@@ -22,7 +22,7 @@
                 android:layout_width="150dp"
                 android:layout_height="150dp"
                 android:layout_gravity="center_horizontal"
-                app:srcCompat="@drawable/boh"
+                app:srcCompat="@drawable/profile_icon"
                 app:tint="@color/black" />
 
             <com.google.android.material.tabs.TabLayout
@@ -67,10 +67,10 @@
             android:background="@color/gray_border" />
 
         <com.google.android.material.textview.MaterialTextView
+            style="@style/TextForm"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="16dp"
-            style="@style/TextForm"
             android:text="@string/login" />
 
     </FrameLayout>

@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/profile_photo"
+        android:layout_width="86dp"
+        android:layout_height="86dp"
+        android:layout_marginStart="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/profile_avatar" />
+
+    <View
+        android:id="@+id/line"
+        android:layout_width="0dp"
+        android:layout_height="0.1dp"
+        app:layout_constraintBottom_toBottomOf="@id/profile_photo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/profile_photo"
+        app:layout_constraintTop_toTopOf="@id/profile_photo" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/posts_count"
+        style="@style/ProfileCountForm"
+        android:layout_marginStart="20dp"
+        android:text="@string/posts_count"
+        app:layout_constraintBottom_toTopOf="@id/line"
+        app:layout_constraintEnd_toStartOf="@id/followers_count"
+        app:layout_constraintStart_toEndOf="@id/profile_photo" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/followers_count"
+        style="@style/ProfileCountForm"
+        android:layout_marginStart="4dp"
+        android:text="@string/followers_count"
+        app:layout_constraintBottom_toTopOf="@id/line"
+        app:layout_constraintEnd_toStartOf="@id/following_count"
+        app:layout_constraintStart_toEndOf="@id/posts_count" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/following_count"
+        style="@style/ProfileCountForm"
+        android:layout_marginStart="4dp"
+        android:layout_marginEnd="16dp"
+        android:text="@string/following_count"
+        app:layout_constraintBottom_toTopOf="@id/line"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/followers_count" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/posts"
+        style="@style/ProfileCountTextForm"
+        android:layout_marginStart="20dp"
+        android:text="@string/posts"
+        app:layout_constraintEnd_toStartOf="@id/followers"
+        app:layout_constraintStart_toEndOf="@id/profile_photo"
+        app:layout_constraintTop_toBottomOf="@id/line" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/followers"
+        style="@style/ProfileCountTextForm"
+        android:layout_marginStart="4dp"
+        android:text="@string/followers"
+        app:layout_constraintEnd_toStartOf="@id/following"
+        app:layout_constraintStart_toEndOf="@id/posts"
+        app:layout_constraintTop_toBottomOf="@id/line" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/following"
+        style="@style/ProfileCountTextForm"
+        android:layout_marginStart="4dp"
+        android:layout_marginEnd="16dp"
+        android:text="@string/following"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/followers"
+        app:layout_constraintTop_toBottomOf="@id/line" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="4dp"
+        android:paddingTop="5dp"
+        android:text="IGORLB"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/profile_photo" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:maxLines="3"
+        app:layout_constraintTop_toBottomOf="@id/name" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/site"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:maxLines="1"
+        android:text="youtube.com/igorlb"
+        android:textColor="@color/blue_link"
+        app:layout_constraintTop_toBottomOf="@id/description" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

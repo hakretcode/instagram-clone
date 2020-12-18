@@ -18,4 +18,16 @@
     <string name="welcome_about">Find people to follow and start sharing photos, You can change your username anytime.</string>
     <string name="change_username">Change username</string>
     <string name="condition">By clicking Next, you agree to our <b><font color="#FF00376B">Terms, Data Policy</font></b> and <b><font color="#FF00376B">Cookies Policy.</font></b></string>
+    <string name="posts_count">%d</string>
+    <string name="following_count">%d</string>
+    <string name="followers_count">%d</string>
+    <string name="posts">Posts</string>
+    <string name="followers">Followers</string>
+    <string name="following">Following</string>
+    <string name="edit_profile">Edit Profile</string>
+    <string name="home">home</string>
+    <string name="search">search</string>
+    <string name="camera">camera</string>
+    <string name="stars">stars</string>
+    <string name="profile">profile</string>
 </resources>

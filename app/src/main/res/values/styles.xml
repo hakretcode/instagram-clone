@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="ContainerForm">
+    <style name="InitialContainerForm">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_marginStart">28dp</item>
         <item name="android:layout_marginEnd">28dp</item>
     </style>
 
-    <style name="ButtonForm" parent="ContainerForm">
+    <style name="ButtonForm" parent="InitialContainerForm">
         <item name="android:insetTop">0dp</item>
         <item name="android:insetBottom">0dp</item>
         <item name="android:letterSpacing">0</item>
@@ -22,7 +22,16 @@
         <item name="backgroundTint">@android:color/transparent</item>
     </style>
 
-    <style name="InputLayoutForm" parent="ContainerForm">
+    <style name="ButtonEditForm" parent="ButtonForm">
+        <item name="android:textColor">@color/black</item>
+        <item name="android:layout_height">34dp</item>
+        <item name="android:textSize">15sp</item>
+        <item name="backgroundTint">@color/white</item>
+        <item name="strokeColor">@color/gray_border</item>
+        <item name="strokeWidth">1dp</item>
+    </style>
+
+    <style name="InputLayoutForm" parent="InitialContainerForm">
         <item name="boxStrokeWidth">0dp</item>
         <item name="boxStrokeWidthFocused">0dp</item>
         <item name="errorEnabled">true</item>
@@ -39,13 +48,27 @@
         <item name="android:textSize">@dimen/medium_text</item>
     </style>
 
-    <style name="TextForm" parent="ContainerForm">
+    <style name="TextForm" parent="InitialContainerForm">
         <item name="android:gravity">center</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_gravity">center_horizontal</item>
         <item name="android:textColor">@color/gray_text</item>
         <item name="android:textSize">@dimen/small_text</item>
+    </style>
+
+    <style name="ProfileCountForm">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:textSize">@dimen/big_text</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="ProfileCountTextForm">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">center_horizontal</item>
     </style>
 
 </resources>
