@@ -26,28 +26,34 @@
                 app:srcCompat="@drawable/logo" />
 
             <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/input_login_toogle"
                 style="@style/InputLayoutForm"
                 android:layout_marginTop="25dp">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/input_login"
                     style="@style/InputForm"
-                    android:hint="@string/input_login" />
+                    android:hint="@string/input_login"
+                    android:inputType="textEmailAddress" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/password_toggle"
+                android:id="@+id/input_password_toogle"
                 style="@style/InputLayoutForm"
                 app:passwordToggleEnabled="true">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/input_password"
                     style="@style/InputForm"
-                    android:hint="@string/password" />
+                    android:hint="@string/password"
+                    android:inputType="textPassword" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
-            <com.google.android.material.button.MaterialButton
-                style="@style/ButtonForm"
+            <com.igorlb.instagram.util.ProgressButton
+                android:id="@+id/button_login"
+                style="@style/InitialContainerForm"
                 android:text="@string/log_in" />
 
             <com.google.android.material.button.MaterialButton
@@ -104,9 +110,7 @@
 
         <com.google.android.material.textview.MaterialTextView
             style="@style/TextForm"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginBottom="16dp"
+            android:padding="16dp"
             android:text="@string/signup" />
 
     </FrameLayout>

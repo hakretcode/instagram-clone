@@ -36,18 +36,20 @@
                     android:text="@string/email" />
             </com.google.android.material.tabs.TabLayout>
 
-            <com.google.android.material.textfield.TextInputLayout
-                style="@style/InputLayoutForm"
-                android:layout_marginTop="16dp">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    style="@style/InputForm"
-                    android:hint="@string/email" />
-
-            </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/input_email"
+                style="@style/InputForm"
+                android:layout_marginStart="28dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="28dp"
+                android:hint="@string/email"
+                android:inputType="textEmailAddress" />
 
             <com.google.android.material.button.MaterialButton
+                android:id="@+id/button"
                 style="@style/ButtonForm"
+                android:layout_marginTop="16dp"
+                android:enabled="false"
                 android:text="@string/next" />
 
         </androidx.appcompat.widget.LinearLayoutCompat>
@@ -68,9 +70,7 @@
 
         <com.google.android.material.textview.MaterialTextView
             style="@style/TextForm"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginBottom="16dp"
+            android:padding="16dp"
             android:text="@string/login" />
 
     </FrameLayout>

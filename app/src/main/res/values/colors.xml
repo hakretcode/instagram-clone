@@ -12,6 +12,6 @@
     <color name="blue_link">#FF00284E</color>
     <color name="gray_text">#FF999999</color>
     <color name="gray_input">#FFFAFAFA</color>
-    <color name="gra_pressed">#FFAFAFAF</color>
+    <color name="gray_pressed">#FFAFAFAF</color>
     <color name="gray_border">#FFDBDBDB</color>
 </resources>
