@@ -30,4 +30,6 @@
     <string name="camera">camera</string>
     <string name="stars">stars</string>
     <string name="profile">profile</string>
+    <string name="test">%s %s</string>
+    <string name="all_comments">View all %d comments</string>
 </resources>

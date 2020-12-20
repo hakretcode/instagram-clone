@@ -5,4 +5,5 @@
         <attr name="android:layout_height" />
         <attr name="android:text" />
     </declare-styleable>
+
 </resources>

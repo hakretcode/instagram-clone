@@ -22,7 +22,7 @@ public class TabFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View fragment = inflater.inflate(R.layout.profile_viewpager_fragment, container, false);
+        View fragment = inflater.inflate(R.layout.main_profile_viewpager_fragment, container, false);
         final RecyclerView recycle = fragment.findViewById(R.id.recycle_view);
         recycle.setLayoutManager(new GridLayoutManager(getContext(), 3));
         recycle.setAdapter(new TabRecycleAdapter());

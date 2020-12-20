@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_marginBottom="12dp"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:id="@+id/header"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/profile_photo"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="14dp"
+            android:layout_marginTop="11dp"
+            android:layout_marginBottom="11dp"
+            android:src="@drawable/profile_avatar" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="3dp"
+            android:layout_toEndOf="@id/profile_photo"
+            android:paddingStart="8dp"
+            android:text="igorlb" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="wrap_content"
+            android:layout_height="52dp"
+            android:layout_alignParentEnd="true"
+            android:paddingEnd="14dp"
+            app:srcCompat="@drawable/menu_icon" />
+
+    </RelativeLayout>
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/image"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@color/blue_link"
+        android:scaleType="centerCrop"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/header" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/stars"
+        android:layout_width="40dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="6dp"
+        android:padding="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/image"
+        app:srcCompat="@drawable/stars" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/comments"
+        android:layout_width="40dp"
+        android:layout_height="50dp"
+        android:padding="8dp"
+        app:layout_constraintStart_toEndOf="@id/stars"
+        app:layout_constraintTop_toBottomOf="@id/image"
+        app:srcCompat="@drawable/comments" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:layout_width="40dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="1dp"
+        android:padding="8dp"
+        app:layout_constraintStart_toEndOf="@id/comments"
+        app:layout_constraintTop_toBottomOf="@id/image"
+        app:srcCompat="@drawable/forward" />
+
+    <com.igorlb.instagram.util.IlbTextView
+        android:id="@+id/post_description"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="14dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/stars" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:paddingStart="14dp"
+        android:layout_marginTop="4dp"
+        android:text="@string/all_comments"
+        android:textColor="@color/gray_text"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/post_description" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

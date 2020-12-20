@@ -15,7 +15,7 @@ public class TabRecycleAdapter extends RecyclerView.Adapter<TabRecycleAdapter.Ho
     @NonNull
     @Override
     public Holder onCreateViewHolder(@NonNull ViewGroup v, int viewType) {
-        return new Holder(LayoutInflater.from(v.getContext()).inflate(R.layout.profile_view_pager_item, v, false));
+        return new Holder(LayoutInflater.from(v.getContext()).inflate(R.layout.main_profile_view_pager_item, v, false));
     }
 
     @Override

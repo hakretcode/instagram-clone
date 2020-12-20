@@ -40,7 +40,7 @@ public class Profile extends Fragment {
         AppBarLayout bar = fragment.findViewById(R.id.app_bar);
         bar.addOnOffsetChangedListener((appBarLayout, verticalOffset) -> {
             if (verticalOffset == 0) toolbar.setBackgroundColor(0xFFF);
-            else toolbar.setBackgroundResource(R.drawable.bg_actionbar);
+            else toolbar.setBackgroundResource(R.drawable.bg_actionbar_profile);
         });
 
         TabLayout tab = fragment.findViewById(R.id.tab);
