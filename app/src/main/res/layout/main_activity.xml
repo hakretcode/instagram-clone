@@ -8,14 +8,14 @@
 
     <fragment
         android:id="@+id/TODO"
-        android:name="com.igorlb.instagram.main.fragment.home.Home"
+        android:name="com.igorlb.instagram.main.fragment.camera.Camera"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@id/navigation_view"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:layout="@layout/main_home_fragment" />
+        tools:layout="@layout/main_search_fragment" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/navigation_view"

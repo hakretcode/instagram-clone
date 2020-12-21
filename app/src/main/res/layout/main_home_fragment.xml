@@ -8,8 +8,8 @@
 
     <com.google.android.material.appbar.MaterialToolbar
         android:layout_width="match_parent"
-        android:background="@drawable/bg_actionbar_home"
         android:layout_height="48dp"
+        android:background="@drawable/bg_actionbar_home"
         app:contentInsetStart="0dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout

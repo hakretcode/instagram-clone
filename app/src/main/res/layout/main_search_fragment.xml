@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/actionbar"
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:background="@drawable/ripple_animation"
+            android:clickable="true"
+            android:focusable="true"
+            android:padding="4dp"
+            android:scaleX="2"
+            android:scaleY="2"
+            app:srcCompat="@drawable/arrrow_back" />
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="33dp"
+            android:layout_marginTop="11dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="11dp"
+            android:background="@drawable/bg_search"
+            android:hint="@string/search_bar"
+            android:imeOptions="actionSearch"
+            android:inputType="textImeMultiLine"
+            android:maxLines="1"
+            android:paddingStart="16dp"
+            android:textColorHighlight="@color/blue_select"
+            android:textColorHint="#FFCCCCCC" />
+
+    </com.google.android.material.appbar.MaterialToolbar>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycle_view"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+</androidx.appcompat.widget.LinearLayoutCompat>

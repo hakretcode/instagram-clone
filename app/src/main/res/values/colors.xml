@@ -6,12 +6,14 @@
     <color name="black">#FF000000</color>
     <color name="black_light">#FF262626</color>
     <color name="blue">#FF0095F6</color>
+    <color name="blue_select">#770095F6</color>
     <color name="blue_disable">#FFB2DFFC</color>
     <color name="blue_pressed">#FF4CB5F9</color>
     <color name="dark_blue_link">#FF00376B</color>
     <color name="blue_link">#FF00284E</color>
     <color name="gray_text">#FF999999</color>
-    <color name="gray_input">#FFFAFAFA</color>
+    <color name="gray_search">#FFEFEFEF</color>
+    <color name="gray_light">#FFFAFAFA</color>
     <color name="gray_pressed">#FFAFAFAF</color>
     <color name="gray_border">#FFDBDBDB</color>
 </resources>
