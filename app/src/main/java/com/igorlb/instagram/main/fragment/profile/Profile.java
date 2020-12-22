@@ -19,47 +19,58 @@ import com.google.android.material.textview.MaterialTextView;
 import com.igorlb.instagram.R;
 
 public class Profile extends Fragment {
-    View fragment;
+    MaterialToolbar toolbar;
+    private MaterialTextView actionBarTitle;
+    private MaterialTextView description;
+    private MaterialTextView site;
+    private AppBarLayout bar;
+    private TabLayout tab;
+    private ViewPager2 viewPager2;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        fragment = inflater.inflate(R.layout.main_profile_fragment, container, false);
-
-        final MaterialToolbar toolbar = fragment.findViewById(R.id.actionbar);
-        ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);
-        final ActionBar actionBar = ((AppCompatActivity) getActivity()).getSupportActionBar();
-        actionBar.setDisplayShowTitleEnabled(false);
-        setActionBarTitle("igorlb");
-
-        final MaterialTextView description = fragment.findViewById(R.id.description);
-        final MaterialTextView site = fragment.findViewById(R.id.site);
+        View view = inflater.inflate(R.layout.main_profile_fragment, container, false);
+        findViews(view);
+        setActionBar("igorlb");
         setVisibilityText(description);
         setVisibilityText(site);
 
-        AppBarLayout bar = fragment.findViewById(R.id.app_bar);
-        bar.addOnOffsetChangedListener((appBarLayout, verticalOffset) -> {
-            if (verticalOffset == 0) toolbar.setBackgroundColor(0xFFF);
-            else toolbar.setBackgroundResource(R.drawable.bg_actionbar_profile);
-        });
-
-        TabLayout tab = fragment.findViewById(R.id.tab);
-        ViewPager2 viewPager2 = fragment.findViewById(R.id.view_pager2);
         viewPager2.setAdapter(new TabPagerAdapter(this));
         new TabLayoutMediator(tab, viewPager2, (tab1, position) -> {
             if (position == 0) tab1.setIcon(R.drawable.grid);
             else tab1.setIcon(R.drawable.tab_profile_icon);
         }).attach();
 
-        return fragment;
+        return view;
+    }
+
+    private void findViews(View view) {
+        toolbar = view.findViewById(R.id.actionbar);
+        actionBarTitle = (MaterialTextView) toolbar.getChildAt(0);
+        bar = view.findViewById(R.id.app_bar);
+        description = view.findViewById(R.id.description);
+        site = view.findViewById(R.id.site);
+        tab = view.findViewById(R.id.tab);
+        viewPager2 = view.findViewById(R.id.view_pager2);
+    }
+
+    private void setActionBar(final String title) {
+        actionBarTitle.setText(title);
+        AppCompatActivity activity = (AppCompatActivity) getActivity();
+        if (activity != null) {
+            activity.setSupportActionBar(toolbar);
+            ActionBar actionBar = activity.getSupportActionBar();
+            if (actionBar != null) actionBar.setDisplayShowTitleEnabled(false);
+        }
+        bar.addOnOffsetChangedListener((appBarLayout, verticalOffset) -> {
+            if (verticalOffset == 0) toolbar.setBackgroundColor(0xFFF);
+            else toolbar.setBackgroundResource(R.drawable.bg_actionbar_profile);
+        });
     }
 
     private void setVisibilityText(MaterialTextView text) {
         if (text.length() > 0) text.setVisibility(View.VISIBLE);
         else text.setVisibility(View.GONE);
-    }
-
-    public void setActionBarTitle(String title) {
-        ((MaterialTextView) fragment.findViewById(R.id.actionbar_title)).setText(title);
     }
 }

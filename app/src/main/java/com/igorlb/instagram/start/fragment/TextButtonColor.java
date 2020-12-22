@@ -8,7 +8,7 @@ import com.google.android.material.button.MaterialButton;
 import com.igorlb.instagram.R;
 
 public class TextButtonColor {
-    static boolean setColorPress(View view, MotionEvent event) {
+    static boolean colorPress(View view, MotionEvent event) {
         final MaterialButton button = (MaterialButton) view;
         final Context context = button.getContext();
         switch (event.getAction()) {

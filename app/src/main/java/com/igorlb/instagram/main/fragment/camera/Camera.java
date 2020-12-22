@@ -15,6 +15,12 @@ public class Camera extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.main_midia_camera_fragment, container, false);
+        final View view = inflater.inflate(R.layout.main_midia_camera_fragment, container, false);
+        findViews(view);
+        return view;
+    }
+
+    private void findViews(View view) {
+
     }
 }

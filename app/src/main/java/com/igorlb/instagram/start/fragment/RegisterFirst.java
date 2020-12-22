@@ -21,11 +21,15 @@ public class RegisterFirst extends Fragment implements TextWatcher {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        final View fragment = inflater.inflate(R.layout.initial_register_first_fragment, container, false);
-        inputEmail = fragment.findViewById(R.id.input_email);
+        final View view = inflater.inflate(R.layout.initial_register_first_fragment, container, false);
+        findViews(view);
         inputEmail.addTextChangedListener(this);
-        button = fragment.findViewById(R.id.button);
-        return fragment;
+        return view;
+    }
+
+    private void findViews(View view) {
+        inputEmail = view.findViewById(R.id.input_email);
+        button = view.findViewById(R.id.button);
     }
 
     @Override

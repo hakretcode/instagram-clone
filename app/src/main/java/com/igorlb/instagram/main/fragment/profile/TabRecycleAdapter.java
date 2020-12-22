@@ -10,8 +10,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.igorlb.instagram.R;
 
 public class TabRecycleAdapter extends RecyclerView.Adapter<TabRecycleAdapter.Holder> {
-    private static int sum = 1;
-
     @NonNull
     @Override
     public Holder onCreateViewHolder(@NonNull ViewGroup v, int viewType) {

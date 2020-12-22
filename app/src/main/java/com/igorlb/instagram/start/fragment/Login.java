@@ -24,22 +24,27 @@ public class Login extends Fragment implements TextWatcher, View.OnClickListener
     private TextInputEditText inputLogin;
     private TextInputLayout passwordToogle;
     private TextInputEditText inputPassword;
+    private MaterialButton textButton;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        final View fragment = inflater.inflate(R.layout.initial_login_fragment, container, false);
-        loginToogle = fragment.findViewById(R.id.input_login_toogle);
-        inputLogin = fragment.findViewById(R.id.input_login);
-        passwordToogle = fragment.findViewById(R.id.input_password_toogle);
-        inputPassword = fragment.findViewById(R.id.input_password);
-        buttonLogin = fragment.findViewById(R.id.button_login);
+        final View view = inflater.inflate(R.layout.initial_login_fragment, container, false);
+        findViews(view);
         inputLogin.addTextChangedListener(this);
         inputPassword.addTextChangedListener(this);
         buttonLogin.setOnClickListener(this);
-        MaterialButton textButton = fragment.findViewById(R.id.button_facebook);
-        textButton.setOnTouchListener(TextButtonColor::setColorPress);
-        return fragment;
+        textButton.setOnTouchListener(TextButtonColor::colorPress);
+        return view;
+    }
+
+    private void findViews(View view) {
+        loginToogle = view.findViewById(R.id.input_login_toogle);
+        inputLogin = view.findViewById(R.id.input_login);
+        passwordToogle = view.findViewById(R.id.input_password_toogle);
+        inputPassword = view.findViewById(R.id.input_password);
+        buttonLogin = view.findViewById(R.id.button_login);
+        textButton = view.findViewById(R.id.button_facebook);
     }
 
     @Override

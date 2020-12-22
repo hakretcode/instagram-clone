@@ -12,13 +12,18 @@ import com.google.android.material.button.MaterialButton;
 import com.igorlb.instagram.R;
 
 public class Welcome extends Fragment {
+    MaterialButton textButton;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        final View fragment = inflater.inflate(R.layout.initial_welcome_fragment, container, false);
-        MaterialButton textButton = fragment.findViewById(R.id.textButton);
-        textButton.setOnTouchListener(TextButtonColor::setColorPress);
-        return fragment;
+        final View view = inflater.inflate(R.layout.initial_welcome_fragment, container, false);
+        findViews(view);
+        textButton.setOnTouchListener(TextButtonColor::colorPress);
+        return view;
+    }
+
+    private void findViews(View view) {
+        textButton = view.findViewById(R.id.textButton);
     }
 }

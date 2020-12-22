@@ -24,14 +24,18 @@ public class RegisterSecond extends Fragment implements TextWatcher, View.OnClic
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        final View fragment = inflater.inflate(R.layout.initial_register_second_fragment, container, false);
-        inputName = fragment.findViewById(R.id.input_name);
-        inputPassword = fragment.findViewById(R.id.input_password);
-        button = fragment.findViewById(R.id.button);
+        final View view = inflater.inflate(R.layout.initial_register_second_fragment, container, false);
+        findViews(view);
         inputName.addTextChangedListener(this);
         inputPassword.addTextChangedListener(this);
         button.setOnClickListener(this);
-        return fragment;
+        return view;
+    }
+
+    private void findViews(View view) {
+        inputName = view.findViewById(R.id.input_name);
+        inputPassword = view.findViewById(R.id.input_password);
+        button = view.findViewById(R.id.button);
     }
 
     @Override
