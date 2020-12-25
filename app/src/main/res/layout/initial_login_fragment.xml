@@ -18,7 +18,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:orientation="vertical"
-            tools:context=".start.Initial">
+            tools:context=".initial.Initial">
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:layout_width="wrap_content"
@@ -33,8 +33,7 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/input_login"
                     style="@style/InputForm"
-                    android:hint="@string/input_login"
-                    android:inputType="textEmailAddress" />
+                    android:hint="@string/input_login" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -109,6 +108,7 @@
             android:background="@color/gray_border" />
 
         <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/register"
             style="@style/TextForm"
             android:padding="16dp"
             android:text="@string/signup" />

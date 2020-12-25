@@ -1,4 +1,4 @@
-package com.igorlb.instagram.start.fragment;
+package com.igorlb.instagram.initial.register;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment;
 
 import com.google.android.material.button.MaterialButton;
 import com.igorlb.instagram.R;
+import com.igorlb.instagram.initial.TextButtonColor;
 
 public class Welcome extends Fragment {
     MaterialButton textButton;

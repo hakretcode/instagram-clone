@@ -1,4 +1,4 @@
-package com.igorlb.instagram.start.fragment;
+package com.igorlb.instagram.initial.register;
 
 import android.os.Bundle;
 import android.os.Handler;

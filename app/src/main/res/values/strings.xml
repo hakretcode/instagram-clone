@@ -36,4 +36,7 @@
     <string name="search_bar">Search</string>
     <string name="new_post">New Post</string>
     <string name="gallery">Gallery</string>
+    <string name="title_activity_a_p_a_g_a_r">APAGAR</string>
+    <string name="tab_text_1">Tab 1</string>
+    <string name="tab_text_2">Tab 2</string>
 </resources>

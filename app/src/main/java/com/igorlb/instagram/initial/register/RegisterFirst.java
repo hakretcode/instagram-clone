@@ -1,4 +1,4 @@
-package com.igorlb.instagram.start.fragment;
+package com.igorlb.instagram.initial.register;
 
 import android.os.Bundle;
 import android.text.Editable;
@@ -13,8 +13,10 @@ import androidx.fragment.app.Fragment;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
 import com.igorlb.instagram.R;
+import com.igorlb.instagram.initial.login.view.SavedIntance;
 
 public class RegisterFirst extends Fragment implements TextWatcher {
+    private SavedIntance savedIntance;
     private TextInputEditText inputEmail;
     private MaterialButton button;
 
@@ -42,4 +44,5 @@ public class RegisterFirst extends Fragment implements TextWatcher {
 
     public void afterTextChanged(Editable a) {
     }
+
 }
