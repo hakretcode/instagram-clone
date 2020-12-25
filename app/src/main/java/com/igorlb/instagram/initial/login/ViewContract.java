@@ -1,6 +1,4 @@
-package com.igorlb.instagram.initial.login.view;
-
-import com.igorlb.instagram.initial.login.InputType;
+package com.igorlb.instagram.initial.login;
 
 public interface ViewContract {
 
@@ -16,6 +14,7 @@ public interface ViewContract {
     interface Presenter {
         void onLogin(String user, String pass);
 
+        boolean onCheckEmail(String text);
     }
 
 }

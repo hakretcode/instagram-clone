@@ -15,12 +15,12 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/welcome_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="28dp"
             android:layout_marginEnd="28dp"
             android:gravity="center"
-            android:text="@string/welcome"
             android:textStyle="bold" />
 
         <com.google.android.material.textview.MaterialTextView
@@ -28,7 +28,8 @@
             android:text="@string/welcome_about"
             android:textSize="@dimen/medium_text" />
 
-        <com.google.android.material.button.MaterialButton
+        <com.igorlb.instagram.util.ProgressButton
+            android:id="@+id/button"
             style="@style/ButtonForm"
             android:layout_marginTop="32dp"
             android:text="@string/next" />

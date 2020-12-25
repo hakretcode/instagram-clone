@@ -36,16 +36,16 @@
                 android:hint="@string/full_name" />
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/input_password"
+                android:id="@+id/input_pass"
                 style="@style/InputForm"
                 android:layout_marginStart="28dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="28dp"
                 android:hint="@string/password" />
 
-            <com.igorlb.instagram.util.ProgressButton
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/button"
-                style="@style/InitialContainerForm"
+                style="@style/ButtonForm"
                 android:layout_marginTop="16dp"
                 android:text="@string/without_contacts" />
 

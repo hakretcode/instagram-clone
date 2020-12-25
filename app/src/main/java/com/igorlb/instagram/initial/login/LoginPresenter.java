@@ -1,36 +1,43 @@
 package com.igorlb.instagram.initial.login;
 
-import com.igorlb.instagram.initial.login.model.LocalDataSource;
-import com.igorlb.instagram.initial.login.model.ModelContract;
-import com.igorlb.instagram.initial.login.view.ViewContract;
+import android.os.Handler;
+import android.os.Looper;
 
-public class LoginPresenter implements ViewContract.Presenter, ModelContract.Presenter {
+import com.igorlb.instagram.database.DataBase;
+
+import java.util.regex.Pattern;
+
+public class LoginPresenter implements ViewContract.Presenter {
     private final ViewContract.View view;
-    private final ModelContract.Model dataSource;
 
     public LoginPresenter(ViewContract.View view) {
         this.view = view;
-        this.dataSource = new LocalDataSource(this);
     }
 
     @Override
     public void onLogin(String user, String pass) {
-        dataSource.login(user, pass);
+        view.progressVisibility(true);
+        new Handler(Looper.getMainLooper()).postDelayed(() -> {
+            boolean[] valids = DataBase.auth(user, pass);
+            if (!valids[0]) {
+                onError(InputType.USER, "Invalid user");
+                return;
+            } else if (!valids[1]) {
+                onError(InputType.PASSWORD, "Invalid password");
+                return;
+            }
+            view.startMain();
+        }, 2000);
     }
 
-    @Override
-    public void onSuccess() {
-        view.startMain();
-    }
-
-    @Override
-    public void onError(InputType inputType, String message) {
+    private void onError(InputType inputType, String message) {
         view.onFailure(inputType, message);
         view.progressVisibility(false);
     }
 
     @Override
-    public void onProgress(boolean visibility) {
-        view.progressVisibility(visibility);
+    public boolean onCheckEmail(String email) {
+        return Pattern.compile("\\w+\\.?\\w+?@(gmail|hotmail|outlook).com")
+                .matcher(email).matches();
     }
 }

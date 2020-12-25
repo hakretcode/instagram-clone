@@ -1,4 +1,4 @@
-package com.igorlb.instagram.initial.login.view;
+package com.igorlb.instagram.initial.login;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -21,19 +21,12 @@ import com.google.android.material.textview.MaterialTextView;
 import com.igorlb.instagram.R;
 import com.igorlb.instagram.initial.Initial;
 import com.igorlb.instagram.initial.TextButtonColor;
-import com.igorlb.instagram.initial.login.InputType;
-import com.igorlb.instagram.initial.login.LoginPresenter;
 import com.igorlb.instagram.initial.register.RegisterFirst;
 import com.igorlb.instagram.main.Main;
 import com.igorlb.instagram.util.ProgressButton;
 
-import java.util.regex.Pattern;
-
 public class Login extends Fragment implements ViewContract.View, TextWatcher {
     private final ViewContract.Presenter presenter;
-    private final String USER_KEY = "USER";
-    private final String PASS_KEY = "PASS";
-    private SavedIntance restore;
     private ProgressButton buttonLogin;
     private TextInputLayout userToogle;
     private TextInputEditText inputUser;
@@ -106,13 +99,13 @@ public class Login extends Fragment implements ViewContract.View, TextWatcher {
     @Override
     public void startMain() {
         startActivity(new Intent(getContext(), Main.class));
+        getActivity().finish();
     }
 
     @Override
     public void onTextChanged(CharSequence s, int start, int before, int count) {
-        final boolean userValid = Pattern.compile("\\w+\\.?\\w+?@(gmail|hotmail|outlook).com")
-                .matcher(inputUser.getText().toString()).matches();
-        buttonLogin.setEnabled(inputUser.length() > 0 && inputPass.length() > 5 && userValid);
+        buttonLogin.setEnabled(inputUser.length() > 0 && inputPass.length() > 5 &&
+                presenter.onCheckEmail(inputUser.getText().toString()));
     }
 
     @Override

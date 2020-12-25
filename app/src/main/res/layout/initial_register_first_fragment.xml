@@ -7,7 +7,7 @@
     <ScrollView
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@id/login"
+        app:layout_constraintBottom_toTopOf="@id/login_btn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -36,19 +36,26 @@
                     android:text="@string/email" />
             </com.google.android.material.tabs.TabLayout>
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/input_email"
-                style="@style/InputForm"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/email_toggle"
+                style="@style/InputLayoutForm"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="28dp"
                 android:layout_marginTop="16dp"
-                android:layout_marginEnd="28dp"
-                android:hint="@string/email"
-                android:inputType="textEmailAddress" />
+                android:layout_marginEnd="28dp">
 
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/button"
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/input_email"
+                    style="@style/InputForm"
+                    android:hint="@string/email"
+                    android:inputType="textEmailAddress" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.igorlb.instagram.util.ProgressButton
+                android:id="@+id/progress_button"
                 style="@style/ButtonForm"
-                android:layout_marginTop="16dp"
                 android:enabled="false"
                 android:text="@string/next" />
 
@@ -56,7 +63,7 @@
     </ScrollView>
 
     <FrameLayout
-        android:id="@+id/login"
+        android:id="@+id/login_btn"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"

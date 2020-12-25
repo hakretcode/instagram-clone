@@ -1,58 +1,65 @@
 package com.igorlb.instagram.initial.register;
 
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
 import com.igorlb.instagram.R;
-import com.igorlb.instagram.util.ProgressButton;
+import com.igorlb.instagram.initial.Initial;
 
-public class RegisterSecond extends Fragment implements TextWatcher, View.OnClickListener {
-    private ProgressButton button;
+public class RegisterSecond extends Fragment implements Contract.Register2, TextWatcher {
+    private final Contract.Presenter2 presenter;
+    private MaterialButton button;
     private TextInputEditText inputName;
-    private TextInputEditText inputPassword;
+    private TextInputEditText inputPass;
+
+    public RegisterSecond() {
+        presenter = Presenter.getInstanceSecond(this);
+    }
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        final View view = inflater.inflate(R.layout.initial_register_second_fragment, container, false);
+        return inflater.inflate(R.layout.initial_register_second_fragment, container, false);
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
         findViews(view);
         inputName.addTextChangedListener(this);
-        inputPassword.addTextChangedListener(this);
-        button.setOnClickListener(this);
-        return view;
+        inputPass.addTextChangedListener(this);
+        button.setOnClickListener(v -> presenter.next(inputName.getText().toString(), inputPass.getText().toString()));
     }
 
     private void findViews(View view) {
         inputName = view.findViewById(R.id.input_name);
-        inputPassword = view.findViewById(R.id.input_password);
+        inputPass = view.findViewById(R.id.input_pass);
         button = view.findViewById(R.id.button);
     }
 
     @Override
     public void onTextChanged(CharSequence s, int start, int before, int count) {
-        button.setEnabled(inputName.length() > 0 && inputPassword.length() > 0);
-    }
-
-    @Override
-    public void onClick(View v) {
-        final Handler handler = new Handler(Looper.getMainLooper());
-        button.setProgressVisibility(true);
-        handler.postDelayed(() -> button.setProgressVisibility(false), 2000);
+        button.setEnabled(inputName.length() > 0 && inputPass.length() > 5);
     }
 
     public void afterTextChanged(Editable a) {
     }
 
     public void beforeTextChanged(CharSequence a, int b, int c, int d) {
+    }
+
+    @Override
+    public void finish() {
+        ((Initial) getActivity()).changeFragment(new Welcome());
     }
 }

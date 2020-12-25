@@ -7,7 +7,7 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.igorlb.instagram.R;
-import com.igorlb.instagram.initial.login.view.Login;
+import com.igorlb.instagram.initial.login.Login;
 
 public class Initial extends FragmentActivity {
 
@@ -15,13 +15,15 @@ public class Initial extends FragmentActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.initial_activity);
-        changeFragment(new Login());
+        final FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        ft.replace(R.id.fragment, new Login());
+        ft.commit();
     }
 
     public void changeFragment(Fragment fragment) {
-        final FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-        fragmentTransaction.replace(R.id.fragment, fragment);
-        fragmentTransaction.addToBackStack(null);
-        fragmentTransaction.commit();
+        final FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        ft.replace(R.id.fragment, fragment);
+        ft.addToBackStack(null);
+        ft.commit();
     }
 }

@@ -14,20 +14,31 @@ public class DataBase {
             new UserAuth("user3@gmail.com", "123478"),
             new UserAuth("user4@gmail.com", "123499"),
             new UserAuth("user5@gmail.com", "123414")));
+    private static final List<User> users = new ArrayList<>();
 
     public static boolean[] auth(String user, String pass) {
         boolean[] valid = new boolean[2];
-        for (UserAuth users : userAuths) {
-            if (users.equals(InputType.USER, user)) {
+        for (UserAuth userObject : userAuths) {
+            if (userObject.equals(InputType.USER, user)) {
                 valid[0] = true;
-                if (users.equals(InputType.PASSWORD, pass)) valid[1] = true;
+                if (userObject.equals(InputType.PASSWORD, pass)) valid[1] = true;
             }
         }
         return valid;
     }
 
-    public static void add(String user, String pass) {
-        userAuths.add(new UserAuth(user, pass));
+    public static boolean emailAvailable(String user) {
+        for (UserAuth userObject : userAuths) {
+            if (userObject.equals(InputType.USER, user)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public static void add(String email, String name, String pass) {
+        userAuths.add(new UserAuth(email, pass));
+        users.add(new User(name, email));
     }
 
 }
