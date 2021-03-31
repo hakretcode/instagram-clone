@@ -14,7 +14,7 @@ public class UserAuth {
     }
 
     public boolean equals(InputType inputType, String text) {
-        if (InputType.USER == inputType) return Objects.equals(user, text);
-        else return Objects.equals(password, text);
+        if (InputType.USER == inputType) return user.equalsIgnoreCase(text);
+        else return password.equalsIgnoreCase(text);
     }
 }

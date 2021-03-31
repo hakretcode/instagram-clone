@@ -13,7 +13,8 @@ public class DataBase {
             new UserAuth("user2@gmail.com", "123427"),
             new UserAuth("user3@gmail.com", "123478"),
             new UserAuth("user4@gmail.com", "123499"),
-            new UserAuth("user5@gmail.com", "123414")));
+            new UserAuth("user5@gmail.com", "123414"),
+            new UserAuth("igor@hakretcode.com", "english")));
     private static final List<User> users = new ArrayList<>();
 
     public static boolean[] auth(String user, String pass) {
@@ -27,7 +28,7 @@ public class DataBase {
         return valid;
     }
 
-    public static boolean emailAvailable(String user) {
+    public static boolean isEmailAvailableForRegister(String user) {
         for (UserAuth userObject : userAuths) {
             if (userObject.equals(InputType.USER, user)) {
                 return false;

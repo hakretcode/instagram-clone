@@ -34,7 +34,7 @@ public class Home extends Fragment {
 
     private void findViews(View view) {
         toolbar = view.findViewById(R.id.actionbar);
-        recycleView = view.findViewById(R.id.recycle_view);
+        recycleView = view.findViewById(R.id.recycler_view);
     }
 
     private void setBars() {

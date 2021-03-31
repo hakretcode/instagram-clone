@@ -16,7 +16,7 @@ public interface Contract {
     }
 
     interface Register2 {
-        void finish();
+        void completeRegistration();
 
     }
 

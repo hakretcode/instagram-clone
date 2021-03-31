@@ -59,7 +59,7 @@ public class RegisterSecond extends Fragment implements Contract.Register2, Text
     }
 
     @Override
-    public void finish() {
+    public void completeRegistration() {
         ((Initial) getActivity()).changeFragment(new Welcome());
     }
 }

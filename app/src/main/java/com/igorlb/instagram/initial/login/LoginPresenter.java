@@ -37,7 +37,7 @@ public class LoginPresenter implements ViewContract.Presenter {
 
     @Override
     public boolean onCheckEmail(String email) {
-        return Pattern.compile("\\w+\\.?\\w+?@(gmail|hotmail|outlook).com")
+        return Pattern.compile("\\w+(\\.\\w+)?@(gmail|hotmail|outlook|hakretcode).com")
                 .matcher(email).matches();
     }
 }

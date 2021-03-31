@@ -69,7 +69,7 @@ public class Presenter implements Contract.Presenter, Contract.Presenter2, Contr
     public void validEmail(String email) {
         register.progressVisibility(true);
         new Handler(Looper.getMainLooper()).postDelayed(() -> {
-            if (DataBase.emailAvailable(email)) {
+            if (DataBase.isEmailAvailableForRegister(email)) {
                 this.email = email;
                 register.next();
             } else register.failure("This email is already being used");
@@ -81,6 +81,6 @@ public class Presenter implements Contract.Presenter, Contract.Presenter2, Contr
     public void next(String name, String pass) {
         this.name = name;
         this.pass = pass;
-        register2.finish();
+        register2.completeRegistration();
     }
 }
