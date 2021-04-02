@@ -1,6 +1,9 @@
 package com.igorlb.instagram.main.gallery;
 
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,7 +14,10 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.exoplayer2.MediaItem;
 import com.igorlb.instagram.R;
+
+import java.io.File;
 
 public class PostImage extends Fragment implements Contract.PostImage {
     private RecyclerView recyclerView;

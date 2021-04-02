@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface Contract {
     interface Presenter {
-        List<String> getImages(ContentResolver resolver);
+        List<Media> getImages(ContentResolver resolver);
     }
 
     interface PostImage {

@@ -22,10 +22,23 @@
                 android:layout_height="wrap_content"
                 app:layout_scrollFlags="scroll">
 
+                <com.google.android.exoplayer2.ui.PlayerView
+                    android:id="@+id/main_video"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:visibility="gone"
+                    app:layout_constraintDimensionRatio="1:1"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@color/blue_link"
+                    app:use_controller="false" />
+
                 <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/main_image"
                     android:layout_width="0dp"
                     android:layout_height="0dp"
+                    android:visibility="gone"
                     app:layout_constraintDimensionRatio="1:1"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
