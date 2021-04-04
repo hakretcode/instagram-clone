@@ -6,10 +6,12 @@ import java.util.List;
 
 public interface Contract {
     interface Presenter {
-        List<Media> getImages(ContentResolver resolver);
+        List<Media> getMedias(ContentResolver resolver);
+
+        List<String> getFolders(List<Media> mediaList);
     }
 
-    interface PostImage {
+    interface GalleryFragment {
 
     }
 }

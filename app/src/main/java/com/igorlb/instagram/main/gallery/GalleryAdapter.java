@@ -11,16 +11,31 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.google.android.material.textview.MaterialTextView;
 import com.igorlb.instagram.R;
-import com.igorlb.instagram.main.gallery.GalleyAdapter.Holder;
+import com.igorlb.instagram.main.gallery.GalleryAdapter.Holder;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
-public class GalleyAdapter extends RecyclerView.Adapter<Holder> {
-    private List<Media> list;
+public class GalleryAdapter extends RecyclerView.Adapter<Holder> {
+    private final List<Media> mediaList;
+    private List<Media> mediaListFiltered;
 
-    public GalleyAdapter(List<Media> list) {
-        this.list = list;
+    public GalleryAdapter(List<Media> mediaList) {
+        this.mediaList = mediaList;
+        mediaListFiltered = mediaList;
+    }
+
+    public void setMediaList(String title) {
+        if (title.equals("Gallery")) mediaListFiltered = mediaList;
+        else {
+            List<Media> tempMediaList = new ArrayList<>();
+            mediaList.forEach(media -> {
+                if (media.getFolder().equals(title)) tempMediaList.add(media);
+            });
+            mediaListFiltered = tempMediaList;
+        }
+        notifyDataSetChanged();
     }
 
     @NonNull
@@ -31,12 +46,12 @@ public class GalleyAdapter extends RecyclerView.Adapter<Holder> {
 
     @Override
     public void onBindViewHolder(@NonNull Holder holder, int position) {
-        holder.bind(list.get(position));
+        holder.bind(mediaListFiltered.get(position));
     }
 
     @Override
     public int getItemCount() {
-        return list.size();
+        return mediaListFiltered.size();
     }
 
     class Holder extends RecyclerView.ViewHolder {
@@ -51,7 +66,6 @@ public class GalleyAdapter extends RecyclerView.Adapter<Holder> {
 
         public void bind(Media media) {
             Glide.with(imageView.getContext()).load(media.getPath()).into(imageView);
-
             if (media.getType() == 3) tvVideoDuration.setText(format(media.getDuration()));
         }
 
@@ -62,8 +76,10 @@ public class GalleyAdapter extends RecyclerView.Adapter<Holder> {
             String secondsToFormat;
             if (seconds < 10) secondsToFormat = "0%d";
             else secondsToFormat = "%d";
-            if (hours > 0) return String.format(Locale.US, "%d:%d:" + secondsToFormat, hours, minutes, seconds);
-            else if (minutes > 0) return String.format(Locale.US, "%d:" + secondsToFormat, minutes, seconds);
+            if (hours > 0)
+                return String.format(Locale.US, "%d:%d:" + secondsToFormat, hours, minutes, seconds);
+            else if (minutes > 0)
+                return String.format(Locale.US, "%d:" + secondsToFormat, minutes, seconds);
             else return String.format(Locale.US, "0:" + secondsToFormat, seconds);
         }
     }

@@ -2,8 +2,6 @@ package com.igorlb.instagram.database;
 
 import com.igorlb.instagram.initial.login.InputType;
 
-import java.util.Objects;
-
 public class UserAuth {
     private final String user;
     private final String password;
