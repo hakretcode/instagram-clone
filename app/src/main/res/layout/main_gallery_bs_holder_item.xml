@@ -4,7 +4,10 @@
     android:id="@+id/tv_folder_title"
     android:layout_width="match_parent"
     android:layout_height="50dp"
+    android:background="@drawable/bg_folders_btn"
+    android:clickable="true"
     android:gravity="center_vertical"
     android:paddingStart="16dp"
     android:textSize="16sp"
-    tools:text="Gallery" />
+    tools:text="Gallery"
+    android:focusable="true" />

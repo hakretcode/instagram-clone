@@ -54,6 +54,13 @@ public class GalleryAdapter extends RecyclerView.Adapter<Holder> {
         return mediaListFiltered.size();
     }
 
+    public String formatSeconds(byte seconds) {
+        String secondsFormatted;
+        if (seconds < 10) secondsFormatted = "0%d";
+        else secondsFormatted = "%d";
+        return secondsFormatted;
+    }
+
     class Holder extends RecyclerView.ViewHolder {
         private final MaterialTextView tvVideoDuration;
         public AppCompatImageView imageView;
@@ -70,17 +77,22 @@ public class GalleryAdapter extends RecyclerView.Adapter<Holder> {
         }
 
         public String format(long millis) {
-            long seconds = (((millis % (1000 * 60 * 60)) % (1000 * 60)) / 1000);
-            long minutes = ((millis % (1000 * 60 * 60)) / (1000 * 60));
-            long hours = (millis / (1000 * 60 * 60));
-            String secondsToFormat;
-            if (seconds < 10) secondsToFormat = "0%d";
-            else secondsToFormat = "%d";
-            if (hours > 0)
-                return String.format(Locale.US, "%d:%d:" + secondsToFormat, hours, minutes, seconds);
-            else if (minutes > 0)
-                return String.format(Locale.US, "%d:" + secondsToFormat, minutes, seconds);
-            else return String.format(Locale.US, "0:" + secondsToFormat, seconds);
+            long allSeconds = millis / 1000;
+            int allMinutes;
+            byte seconds, minutes, hours;
+            String timeFormatted;
+            if (allSeconds >= 60) {
+                allMinutes = (int) (allSeconds / 60);
+                seconds = (byte) (allSeconds % 60);
+                if (allMinutes >= 60) {
+                    hours = (byte) (allMinutes / 60);
+                    minutes = (byte) (allMinutes % 60);
+                    timeFormatted = String.format(Locale.US, "%d:%d:" + formatSeconds(seconds), hours, minutes, seconds);
+                } else
+                    timeFormatted = String.format(Locale.US, "%d:" + formatSeconds(seconds), allMinutes, seconds);
+            } else
+                timeFormatted = String.format(Locale.US, "0:" + formatSeconds((byte) allSeconds), allSeconds);
+            return timeFormatted;
         }
     }
 }

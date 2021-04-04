@@ -14,7 +14,7 @@ public class TextButtonColor {
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
                 button.setTextColor(context.getColor(R.color.blue_pressed));
-                break;
+                return true;
             case MotionEvent.ACTION_CANCEL:
             case MotionEvent.ACTION_UP:
                 button.setTextColor(context.getColor(R.color.blue));

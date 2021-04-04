@@ -12,7 +12,7 @@
     <color name="dark_blue_link">#FF00376B</color>
     <color name="blue_link">#FF00284E</color>
     <color name="gray_text">#FF999999</color>
-    <color name="gray_search">#FFEFEFEF</color>
+    <color name="gray_200">#FFEFEFEF</color>
     <color name="gray_light">#FFFAFAFA</color>
     <color name="gray_pressed">#FFAFAFAF</color>
     <color name="gray_border">#FFDBDBDB</color>

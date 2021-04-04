@@ -1,15 +1,14 @@
 package com.igorlb.instagram.main.gallery;
 
-import android.app.Dialog;
 import android.graphics.Point;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -37,30 +36,37 @@ public class BottomSheet extends BottomSheetDialogFragment {
         setStyle(STYLE_NORMAL, R.style.CustomBottomSheetDialogTheme);
     }
 
-    @Override
-    public void onStart() {
-        super.onStart();
-        final Dialog dialog = getDialog();
-        final FragmentActivity activity = getActivity();
-        if (dialog == null || activity == null) return;
-        final BottomSheetBehavior<View> bottomSheetBehavior = BottomSheetBehavior.from(dialog.
-                findViewById((com.google.android.material.R.id.design_bottom_sheet)));
-        final Point point = new Point();
-        activity.getWindowManager().getDefaultDisplay().getRealSize(point);
-        bottomSheetBehavior.setPeekHeight(point.y);
-    }
-
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        final View view = inflater.inflate(R.layout.main_gallery_bs_fragment, container, false);
+        return inflater.inflate(R.layout.main_gallery_bs_fragment, container, true);
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        final BottomSheetBehavior<View> bottomSheetBehavior = BottomSheetBehavior.from(getDialog()
+                .findViewById((com.google.android.material.R.id.design_bottom_sheet)));
+        setHeight(bottomSheetBehavior);
         final RecyclerView rvFolders = view.findViewById(R.id.rv_folders);
+        setRecycle(rvFolders);
+        rvFolders.setOnScrollChangeListener((v, sx, sy, osx, osy) -> {
+            if (osy > 100) bottomSheetBehavior.setState(BottomSheetBehavior.STATE_HIDDEN);
+        });
+    }
+
+    private void setHeight(BottomSheetBehavior<View> bottomSheetBehavior) {
+        final Point point = new Point();
+        getActivity().getWindowManager().getDefaultDisplay().getRealSize(point);
+        bottomSheetBehavior.setPeekHeight(point.y);
+    }
+
+    private void setRecycle(RecyclerView rvFolders) {
         rvFolders.setLayoutManager(new LinearLayoutManager(getContext()));
         rvFolders.setAdapter(new GalleryBsAdapter(folders, folder -> {
             adapter.setMediaList(folder);
             btnCurrentFolderTitle.setText(folder);
             dismiss();
         }));
-        return view;
     }
 }

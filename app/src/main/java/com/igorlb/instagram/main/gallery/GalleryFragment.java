@@ -1,10 +1,15 @@
 package com.igorlb.instagram.main.gallery;
 
+import android.Manifest;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.LinearLayoutCompat;
@@ -14,6 +19,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.textview.MaterialTextView;
 import com.igorlb.instagram.R;
+import com.igorlb.instagram.main.Main;
 
 import java.util.List;
 
@@ -21,6 +27,30 @@ public class GalleryFragment extends Fragment implements Contract.GalleryFragmen
     private RecyclerView recyclerView;
     private Contract.Presenter presenter;
     private LinearLayoutCompat btnFolders;
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        if (getContext().checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+            if (shouldShowRequestPermissionRationale(Manifest.permission.READ_EXTERNAL_STORAGE))
+                requestDenied();
+            else {
+                final ActivityResultLauncher<String> launcher = registerForActivityResult
+                        (new ActivityResultContracts.RequestPermission(), result -> {
+                            if (result) {
+                                ((Main) getActivity()).changeFragment(new GalleryFragment());
+                                getParentFragmentManager().beginTransaction().remove(this);
+                            } else requestDenied();
+                        });
+                launcher.launch(Manifest.permission.READ_EXTERNAL_STORAGE);
+            }
+        }
+    }
+
+    public void requestDenied() {
+        Toast.makeText(getContext(), R.string.permission_necessary, Toast.LENGTH_LONG).show();
+        getParentFragmentManager().popBackStack();
+    }
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -39,16 +69,6 @@ public class GalleryFragment extends Fragment implements Contract.GalleryFragmen
         final List<String> folders = presenter.getFolders(mediaList);
         btnFolders.setOnClickListener(v -> new BottomSheet(adapter, folders, (MaterialTextView)
                 btnFolders.getChildAt(0)).show(getParentFragmentManager(), null));
-    }
-
-    @Override
-    public void onStop() {
-        super.onStop();
-    }
-
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
     }
 
     private void findViews(View view) {
