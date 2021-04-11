@@ -2,7 +2,6 @@ package com.igorlb.instagram.main.gallery;
 
 import android.graphics.Point;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,12 +18,12 @@ import com.igorlb.instagram.R;
 
 import java.util.List;
 
-public class BottomSheet extends BottomSheetDialogFragment {
+public class BottomSheetFragment extends BottomSheetDialogFragment {
     private final GalleryAdapter adapter;
     private final List<String> folders;
     private final MaterialTextView btnCurrentFolderTitle;
 
-    public BottomSheet(GalleryAdapter adapter, List<String> folders, MaterialTextView btnCurrentFolderTitle) {
+    public BottomSheetFragment(GalleryAdapter adapter, List<String> folders, MaterialTextView btnCurrentFolderTitle) {
         this.adapter = adapter;
         this.folders = folders;
         this.btnCurrentFolderTitle = btnCurrentFolderTitle;

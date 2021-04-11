@@ -79,4 +79,13 @@
         <item name="android:background">@android:color/transparent</item>
     </style>
 
+    <style name="ExpansiveDialog" parent="@android:style/Theme.Dialog">
+        <item name="android:windowAnimationStyle">@style/ExpansiveDialogAnim</item>
+    </style>
+
+    <style name="ExpansiveDialogAnim">
+        <item name="android:windowEnterAnimation">@android:anim/fade_in</item>
+        <item name="android:windowExitAnimation">@android:anim/fade_out</item>
+    </style>
+
 </resources>

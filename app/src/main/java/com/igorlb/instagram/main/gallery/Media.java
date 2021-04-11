@@ -5,6 +5,7 @@ public class Media {
     private final int type;
     private final String folder;
     private long duration;
+    private boolean foregroundUnable;
 
     public Media(String path, int type, String folder) {
         this.path = path;
@@ -33,5 +34,13 @@ public class Media {
 
     public long getDuration() {
         return duration;
+    }
+
+    public void setForegroundUnable(boolean foregroundUnable) {
+        this.foregroundUnable = foregroundUnable;
+    }
+
+    public boolean isForegroundEnable() {
+        return foregroundUnable;
     }
 }

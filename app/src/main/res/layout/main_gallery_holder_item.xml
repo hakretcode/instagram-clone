@@ -16,6 +16,15 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:src="@color/black" />
 
+    <include
+        layout="@layout/main_gallery_holder_foreground"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="@id/small_image"
+        app:layout_constraintEnd_toEndOf="@id/small_image"
+        app:layout_constraintStart_toStartOf="@id/small_image"
+        app:layout_constraintTop_toTopOf="@id/small_image" />
+
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/tv_video_duration"
         android:layout_width="wrap_content"
@@ -28,5 +37,6 @@
         app:layout_constraintEnd_toEndOf="@id/small_image"
         tools:ignore="SmallSp"
         tools:text="1:23" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical">
 
     <include layout="@layout/main_gallery_toolbar" />
@@ -13,6 +14,7 @@
         android:layout_weight="1">
 
         <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/abl_header"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/white">
@@ -23,8 +25,9 @@
                 app:layout_scrollFlags="scroll">
 
                 <com.google.android.exoplayer2.ui.PlayerView
-                    android:id="@+id/main_video"
+                    android:id="@+id/video_preview"
                     android:layout_width="0dp"
+                    app:resize_mode="zoom"
                     android:layout_height="0dp"
                     android:visibility="gone"
                     app:layout_constraintDimensionRatio="1:1"
@@ -35,15 +38,27 @@
                     app:use_controller="false" />
 
                 <androidx.appcompat.widget.AppCompatImageView
-                    android:id="@+id/main_image"
+                    android:id="@+id/image_preview"
                     android:layout_width="0dp"
                     android:layout_height="0dp"
                     android:visibility="gone"
+                    tools:visibility="visible"
+                    android:scaleType="centerCrop"
                     app:layout_constraintDimensionRatio="1:1"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@color/blue_link" />
+                    tools:srcCompat="@drawable/image_test" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:id="@+id/iv_expand"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:srcCompat="@color/black" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -72,9 +87,9 @@
                     <androidx.appcompat.widget.AppCompatImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="1dp"
-                        android:layout_marginStart="1dp"
                         android:layout_gravity="center"
+                        android:layout_marginStart="1dp"
+                        android:layout_marginTop="1dp"
                         app:srcCompat="@drawable/arrow_down" />
 
                 </androidx.appcompat.widget.LinearLayoutCompat>
@@ -91,7 +106,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/main_image" />
+            app:layout_constraintTop_toBottomOf="@id/image_preview" />
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </androidx.appcompat.widget.LinearLayoutCompat>

@@ -61,7 +61,7 @@ public class Presenter implements Contract.Presenter, Contract.Presenter2, Contr
 
     @Override
     public boolean checkEmail(CharSequence email) {
-        return Pattern.compile("\\w+\\.?\\w+?@(gmail|hotmail|outlook).com")
+        return Pattern.compile("\\w+(\\.\\w+)?@(gmail|hotmail|outlook).com")
                 .matcher(email).matches();
     }
 

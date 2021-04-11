@@ -3,19 +3,37 @@ package com.igorlb.instagram.main.gallery;
 import android.annotation.SuppressLint;
 import android.content.ContentResolver;
 import android.database.Cursor;
+import android.media.MediaFormat;
+import android.net.Uri;
 import android.provider.MediaStore;
 import android.util.Log;
 
+import androidx.annotation.Nullable;
+
+import com.google.android.exoplayer2.Format;
+import com.google.android.exoplayer2.MediaItem;
+import com.google.android.exoplayer2.Player;
+import com.google.android.exoplayer2.SimpleExoPlayer;
+import com.google.android.exoplayer2.ui.PlayerView;
+import com.google.android.exoplayer2.video.VideoFrameMetadataListener;
+import com.google.android.exoplayer2.video.VideoListener;
+
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
 
 public class Presenter implements Contract.Presenter {
-    private final Contract.GalleryFragment model;
+    private final Contract.GalleryFragment view;
+    private boolean playWhenReady = true;
+    private long currentTime;
+    private MediaItem mediaItem;
+    private SimpleExoPlayer player;
+    private int windowMode;
 
     public Presenter(Contract.GalleryFragment galleryFragment) {
-        model = galleryFragment;
+        view = galleryFragment;
     }
 
     @SuppressLint("InlinedApi")
@@ -45,5 +63,49 @@ public class Presenter implements Contract.Presenter {
                 .distinct().sorted().collect(Collectors.toList());
         folders.add(0, "Gallery");
         return folders;
+    }
+
+    @Override
+    public void configurePlayer(PlayerView playerView) {
+        if (mediaItem == null) return;
+        if (player == null) {
+            player = new SimpleExoPlayer.Builder(playerView.getContext()).build();
+            player.addListener(new Player.EventListener() {
+                @Override
+                public void onPlaybackStateChanged(int state) {
+                    if (state == SimpleExoPlayer.STATE_ENDED) configurePlayer(playerView);
+                }
+            });
+        }
+        playerView.setPlayer(player);
+        player.setMediaItem(mediaItem);
+        player.setPlayWhenReady(playWhenReady);
+        player.seekTo(windowMode, currentTime);
+        player.prepare();
+        playWhenReady = true;
+        windowMode = 0;
+        currentTime = 0;
+    }
+
+    @Override
+    public void setMediaItem(String path) {
+        if (path != null) mediaItem = MediaItem.fromUri(Uri.fromFile(new File(path)));
+    }
+
+    @Override
+    public void stopPlayer() {
+        if (player == null) return;
+        playWhenReady = player.getPlayWhenReady();
+        currentTime = player.getCurrentPosition();
+        windowMode = player.getCurrentWindowIndex();
+        player.release();
+        player = null;
+    }
+
+    @Override
+    public void stopPlayerWithoutSave() {
+        if (player == null) return;
+        player.release();
+        player = null;
     }
 }
