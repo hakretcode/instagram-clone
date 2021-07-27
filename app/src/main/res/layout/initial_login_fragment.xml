@@ -50,9 +50,9 @@
 
             </com.google.android.material.textfield.TextInputLayout>
 
-            <com.igorlb.instagram.util.ProgressButton
+            <com.hakretcode.instagram.util.ProgressButton
                 android:id="@+id/button_login"
-                style="@style/InitialContainerForm"
+                style="@style/ButtonForm"
                 android:text="@string/log_in" />
 
             <com.google.android.material.button.MaterialButton

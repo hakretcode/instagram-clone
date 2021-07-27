@@ -79,7 +79,7 @@
         app:layout_constraintTop_toBottomOf="@id/image"
         app:srcCompat="@drawable/forward" />
 
-    <com.igorlb.instagram.util.IlbTextView
+    <com.hakretcode.instagram.util.TextViewWithMoreButton
         android:id="@+id/post_description"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
