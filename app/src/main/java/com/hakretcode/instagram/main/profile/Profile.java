@@ -1,4 +1,4 @@
-package com.hakretcode.instagram.main.fragment.profile;
+package com.hakretcode.instagram.main.profile;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;

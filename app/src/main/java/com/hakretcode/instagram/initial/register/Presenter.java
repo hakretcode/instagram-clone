@@ -7,10 +7,10 @@ import com.hakretcode.instagram.database.DataBase;
 
 import java.util.regex.Pattern;
 
-public class Presenter implements Contract.Presenter, Contract.Presenter2, Contract.WelcomePresenter {
+public class Presenter implements Contract.EmailPresenter, Contract.NamePassPresenter, Contract.WelcomePresenter {
     private static Presenter instance;
-    private Contract.Register register;
-    private Contract.Register2 register2;
+    private Contract.EmailRegister register;
+    private Contract.NamePassRegister namePassRegister;
     private String email;
     private String name;
     private String pass;
@@ -21,14 +21,14 @@ public class Presenter implements Contract.Presenter, Contract.Presenter2, Contr
     private Presenter() {
     }
 
-    public static Contract.Presenter getInstanceFirst(Contract.Register register) {
+    public static Contract.EmailPresenter getInstanceFirst(Contract.EmailRegister register) {
         if (instance == null) instance = new Presenter();
         instance.register = register;
         return instance;
     }
 
-    public static Contract.Presenter2 getInstanceSecond(Contract.Register2 register) {
-        instance.register2 = register;
+    public static Contract.NamePassPresenter getInstanceSecond(Contract.NamePassRegister register) {
+        instance.namePassRegister = register;
         return instance;
     }
 
@@ -81,6 +81,6 @@ public class Presenter implements Contract.Presenter, Contract.Presenter2, Contr
     public void next(String name, String pass) {
         this.name = name;
         this.pass = pass;
-        register2.completeRegistration();
+        namePassRegister.completeRegistration();
     }
 }

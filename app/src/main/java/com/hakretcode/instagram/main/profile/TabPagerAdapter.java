@@ -1,4 +1,4 @@
-package com.hakretcode.instagram.main.fragment.profile;
+package com.hakretcode.instagram.main.profile;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;

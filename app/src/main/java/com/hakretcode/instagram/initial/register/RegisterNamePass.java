@@ -16,8 +16,8 @@ import com.google.android.material.textfield.TextInputEditText;
 import com.hakretcode.instagram.R;
 import com.hakretcode.instagram.initial.Initial;
 
-public class RegisterNamePass extends Fragment implements Contract.Register2, TextWatcher {
-    private final Contract.Presenter2 presenter;
+public class RegisterNamePass extends Fragment implements Contract.NamePassRegister, TextWatcher {
+    private final Contract.NamePassPresenter presenter;
     private MaterialButton button;
     private TextInputEditText inputName;
     private TextInputEditText inputPass;

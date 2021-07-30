@@ -20,8 +20,8 @@ import com.hakretcode.instagram.R;
 import com.hakretcode.instagram.initial.Initial;
 import com.hakretcode.instagram.util.ProgressButton;
 
-public class RegisterEmail extends Fragment implements Contract.Register, TextWatcher {
-    private final Contract.Presenter presenter;
+public class RegisterEmail extends Fragment implements Contract.EmailRegister, TextWatcher {
+    private final Contract.EmailPresenter presenter;
     private TextInputLayout emailToggle;
     private TextInputEditText inputEmail;
     private ProgressButton nextButton;

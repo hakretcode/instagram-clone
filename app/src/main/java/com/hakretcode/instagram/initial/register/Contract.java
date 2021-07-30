@@ -1,7 +1,7 @@
 package com.hakretcode.instagram.initial.register;
 
 public interface Contract {
-    interface Register {
+    interface EmailRegister {
         void failure(String error);
 
         void progressVisibility(boolean visibility);
@@ -9,18 +9,18 @@ public interface Contract {
         void next();
     }
 
-    interface Presenter {
+    interface EmailPresenter {
         boolean checkEmail(CharSequence email);
 
         void validEmail(String email);
     }
 
-    interface Register2 {
+    interface NamePassRegister {
         void completeRegistration();
 
     }
 
-    interface Presenter2 {
+    interface NamePassPresenter {
         void next(String name, String pass);
     }
 
