@@ -12,7 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.hakretcode.instagram.R;
-import com.hakretcode.instagram.util.TextViewWithMoreButton;
+import com.hakretcode.instagram.commons.TextViewWithMoreButton;
 
 public class RecycleAdapter extends RecyclerView.Adapter<RecycleAdapter.Holder> {
     @NonNull

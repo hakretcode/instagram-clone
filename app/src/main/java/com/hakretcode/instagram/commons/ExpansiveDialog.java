@@ -1,4 +1,4 @@
-package com.hakretcode.instagram.util;
+package com.hakretcode.instagram.commons;
 
 import android.app.Dialog;
 import android.content.Context;
@@ -6,9 +6,7 @@ import android.os.Bundle;
 import android.util.Pair;
 import android.util.TypedValue;
 import android.view.Gravity;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.FrameLayout;
@@ -59,7 +57,7 @@ public class ExpansiveDialog extends Dialog {
 
     public static class Builder {
         private final Context context;
-        private List<Pair<MaterialTextView, View.OnClickListener>> textViewList = new ArrayList<>();
+        private final List<Pair<MaterialTextView, View.OnClickListener>> textViewList = new ArrayList<>();
         private String title;
 
         public Builder(Context context) {
@@ -74,24 +72,19 @@ public class ExpansiveDialog extends Dialog {
         public ExpansiveDialog.Builder addButton(String title, View.OnClickListener onClick) {
             final MaterialTextView textView = new MaterialTextView(context);
             textView.setGravity(Gravity.CENTER_VERTICAL);
-            textView.setPadding(convertDpToPixel(14), 0, 0, 0);
+            textView.setPadding(Utils.convertDpToPixel(context.getResources(), 14), 0, 0, 0);
             textView.setText(title);
             textView.setTextSize(16);
             textView.setFocusable(true);
             textView.setClickable(true);
             textView.setBackgroundResource(R.drawable.bg_tv_dialog);
-            textView.setLayoutParams(new LinearLayoutCompat.LayoutParams(LinearLayoutCompat.LayoutParams.MATCH_PARENT, convertDpToPixel(48)));
+            textView.setLayoutParams(new LinearLayoutCompat.LayoutParams(LinearLayoutCompat.LayoutParams.MATCH_PARENT, Utils.convertDpToPixel(context.getResources(), 48)));
             textViewList.add(new Pair<>(textView, onClick));
             return this;
         }
 
-        public int convertDpToPixel(int dp) {
-            return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, context.getResources().getDisplayMetrics());
-        }
-
         public ExpansiveDialog build() {
-            ExpansiveDialog expansiveDialog = new ExpansiveDialog(context, title, textViewList);
-            return expansiveDialog;
+            return new ExpansiveDialog(context, title, textViewList);
         }
     }
 }

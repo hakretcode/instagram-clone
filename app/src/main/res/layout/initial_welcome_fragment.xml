@@ -28,7 +28,7 @@
             android:text="@string/welcome_about"
             android:textSize="@dimen/medium_text" />
 
-        <com.hakretcode.instagram.util.ProgressButton
+        <com.hakretcode.instagram.commons.ProgressButton
             android:id="@+id/button"
             style="@style/ButtonForm"
             android:layout_marginTop="32dp"

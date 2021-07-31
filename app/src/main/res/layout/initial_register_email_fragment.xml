@@ -53,7 +53,7 @@
 
             </com.google.android.material.textfield.TextInputLayout>
 
-            <com.hakretcode.instagram.util.ProgressButton
+            <com.hakretcode.instagram.commons.ProgressButton
                 android:id="@+id/progress_button"
                 style="@style/ButtonForm"
                 android:enabled="false"

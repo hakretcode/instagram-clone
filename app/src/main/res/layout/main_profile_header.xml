@@ -4,14 +4,16 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <androidx.appcompat.widget.AppCompatImageView
+    <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/profile_photo"
         android:layout_width="86dp"
         android:layout_height="86dp"
         android:layout_marginStart="20dp"
+        app:civ_border_width="2dp"
+        app:civ_border_color="@color/white"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/profile_avatar" />
+        android:src="@drawable/profile_avatar" />
 
     <View
         android:id="@+id/line"

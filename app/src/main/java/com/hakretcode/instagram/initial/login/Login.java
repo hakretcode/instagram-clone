@@ -23,7 +23,7 @@ import com.hakretcode.instagram.initial.Initial;
 import com.hakretcode.instagram.initial.TextButtonColor;
 import com.hakretcode.instagram.initial.register.RegisterEmail;
 import com.hakretcode.instagram.main.Main;
-import com.hakretcode.instagram.util.ProgressButton;
+import com.hakretcode.instagram.commons.ProgressButton;
 
 public class Login extends Fragment implements ViewContract.View, TextWatcher {
     private final ViewContract.Presenter presenter;

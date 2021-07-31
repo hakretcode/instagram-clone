@@ -26,7 +26,6 @@ import com.google.android.material.appbar.AppBarLayout;
 import com.google.android.material.textview.MaterialTextView;
 import com.hakretcode.instagram.R;
 import com.hakretcode.instagram.main.Main;
-import com.hakretcode.instagram.util.ExpansiveDialog;
 
 import java.util.List;
 

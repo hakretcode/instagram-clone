@@ -1,4 +1,4 @@
-package com.hakretcode.instagram.util;
+package com.hakretcode.instagram.commons;
 
 import android.content.Context;
 import android.graphics.Rect;

@@ -37,4 +37,6 @@
     <string name="new_post">New Post</string>
     <string name="gallery">Gallery</string>
     <string name="permission_necessary">Storage permission</string>
+    <string name="take_a_photo">Take a photo</string>
+    <string name="get_from_gallery">Get photo from gallery</string>
 </resources>

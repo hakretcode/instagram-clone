@@ -1,4 +1,4 @@
-package com.hakretcode.instagram.util;
+package com.hakretcode.instagram.commons;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -6,10 +6,8 @@ import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.util.AttributeSet;
-import android.util.Pair;
 import android.util.TypedValue;
 import android.view.Gravity;
-import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ProgressBar;
 
