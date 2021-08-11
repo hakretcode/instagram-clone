@@ -13,9 +13,9 @@ import androidx.fragment.app.Fragment;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textview.MaterialTextView;
 import com.hakretcode.instagram.R;
+import com.hakretcode.instagram.commons.ProgressButton;
 import com.hakretcode.instagram.initial.TextButtonColor;
 import com.hakretcode.instagram.main.Main;
-import com.hakretcode.instagram.commons.ProgressButton;
 
 public class Welcome extends Fragment implements Contract.Welcome {
     private final Contract.WelcomePresenter presenter;

@@ -20,10 +20,10 @@
         android:visibility="gone" />
 
     <View
+        android:id="@+id/line"
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:id="@+id/line"
-        android:visibility="gone"
-        android:background="@color/gray_border" />
+        android:background="@color/gray_border"
+        android:visibility="gone" />
 
 </androidx.appcompat.widget.LinearLayoutCompat>

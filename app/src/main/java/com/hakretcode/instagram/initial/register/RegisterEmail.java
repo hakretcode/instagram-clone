@@ -17,8 +17,8 @@ import androidx.fragment.app.Fragment;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 import com.hakretcode.instagram.R;
-import com.hakretcode.instagram.initial.Initial;
 import com.hakretcode.instagram.commons.ProgressButton;
+import com.hakretcode.instagram.initial.Initial;
 
 public class RegisterEmail extends Fragment implements Contract.EmailRegister, TextWatcher {
     private final Contract.EmailPresenter presenter;
@@ -47,7 +47,7 @@ public class RegisterEmail extends Fragment implements Contract.EmailRegister, T
     private void setClicks() {
         inputEmail.addTextChangedListener(this);
         login_button.setOnClickListener(v -> getParentFragmentManager().popBackStack());
-        nextButton.setOnClickListener(v -> presenter.validEmail(inputEmail.getText().toString()));
+        nextButton.setOnClickListener(v -> presenter.validEmail(inputEmail.getText().toString().toLowerCase()));
     }
 
     private void findViews(View view) {

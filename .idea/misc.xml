@@ -3,8 +3,17 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/res/drawable/arrow_back.xml" value="0.21944444444444444" />
+        <entry key="app/src/main/res/drawable/arrrow_back.xml" value="0.1203125" />
+        <entry key="app/src/main/res/layout/main_activity.xml" value="0.16296296296296298" />
         <entry key="app/src/main/res/layout/main_profile_fragment.xml" value="0.15925925925925927" />
         <entry key="app/src/main/res/layout/main_profile_header.xml" value="0.15925925925925927" />
+        <entry key="app/src/main/res/menu/main.xml" value="0.10052083333333334" />
+        <entry key="cropper/src/main/res/drawable/arrow_back.xml" value="0.21944444444444444" />
+        <entry key="cropper/src/main/res/drawable/cropper_arrow_back.xml" value="0.21574074074074073" />
+        <entry key="cropper/src/main/res/layout/crop_image_activity.xml" value="0.1787037037037037" />
+        <entry key="cropper/src/main/res/layout/crop_image_view.xml" value="0.215625" />
+        <entry key="cropper/src/main/res/menu/crop_image_menu.xml" value="0.10416666666666667" />
       </map>
     </option>
   </component>

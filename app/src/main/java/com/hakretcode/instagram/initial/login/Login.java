@@ -1,5 +1,6 @@
 package com.hakretcode.instagram.initial.login;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -19,11 +20,11 @@ import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.android.material.textview.MaterialTextView;
 import com.hakretcode.instagram.R;
+import com.hakretcode.instagram.commons.ProgressButton;
 import com.hakretcode.instagram.initial.Initial;
 import com.hakretcode.instagram.initial.TextButtonColor;
 import com.hakretcode.instagram.initial.register.RegisterEmail;
 import com.hakretcode.instagram.main.Main;
-import com.hakretcode.instagram.commons.ProgressButton;
 
 public class Login extends Fragment implements ViewContract.View, TextWatcher {
     private final ViewContract.Presenter presenter;
@@ -41,6 +42,7 @@ public class Login extends Fragment implements ViewContract.View, TextWatcher {
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+
         return inflater.inflate(R.layout.initial_login_fragment, container, false);
     }
 
@@ -49,13 +51,15 @@ public class Login extends Fragment implements ViewContract.View, TextWatcher {
         super.onViewCreated(view, bundle);
         findViews(view);
         setClick();
+        Context context = getContext();
+        presenter.init(context.getSharedPreferences(context.getPackageName() + "_prefs", 0));
     }
 
     private void setClick() {
         inputUser.addTextChangedListener(this);
         inputPass.addTextChangedListener(this);
         textButton.setOnTouchListener(TextButtonColor::colorPress);
-        buttonLogin.setOnClickListener(v -> presenter.onLogin(inputUser.getText().toString(),
+        buttonLogin.setOnClickListener(v -> presenter.onLogin(getActivity(), inputUser.getText().toString().toLowerCase(),
                 inputPass.getText().toString()));
         registerButton.setOnClickListener(v -> ((Initial) getActivity()).changeFragment(new RegisterEmail()));
     }
@@ -71,22 +75,17 @@ public class Login extends Fragment implements ViewContract.View, TextWatcher {
     }
 
     @Override
-    public void onFailure(InputType type, String errorName) {
+    public void onFailure(String errorName) {
         inputPass.setText(null);
-
-        if (type == InputType.USER) {
-            inputUser.setText(null);
-            userToogle.setError(errorName);
-            inputUser.setBackgroundResource(R.drawable.bg_input_error);
-        } else {
-            passToogle.setError(errorName);
-            inputPass.setBackgroundResource(R.drawable.bg_input_error);
-        }
+        inputUser.setText(null);
+        userToogle.setError(errorName);
+        inputUser.setBackgroundResource(R.drawable.bg_input_error);
+        inputUser.setText(null);
+        inputPass.setBackgroundResource(R.drawable.bg_input_error);
 
         new Handler(Looper.getMainLooper()).postDelayed(() -> {
             userToogle.setError(null);
             inputUser.setBackgroundResource(R.drawable.bg_input);
-            passToogle.setError(null);
             inputPass.setBackgroundResource(R.drawable.bg_input);
         }, 5000);
     }
@@ -98,7 +97,8 @@ public class Login extends Fragment implements ViewContract.View, TextWatcher {
 
     @Override
     public void startMain() {
-        startActivity(new Intent(getContext(), Main.class));
+        Intent intent = new Intent(getContext(), Main.class);
+        startActivity(intent);
         getActivity().finish();
     }
 

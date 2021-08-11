@@ -1,7 +1,8 @@
 package com.hakretcode.instagram.initial.login;
 
-import android.os.Handler;
-import android.os.Looper;
+import android.app.Activity;
+import android.content.SharedPreferences;
+import android.os.AsyncTask;
 
 import com.hakretcode.instagram.database.DataBase;
 
@@ -15,23 +16,18 @@ public class LoginPresenter implements ViewContract.Presenter {
     }
 
     @Override
-    public void onLogin(String user, String pass) {
+    public void onLogin(Activity activity, String user, String pass) {
         view.progressVisibility(true);
-        new Handler(Looper.getMainLooper()).postDelayed(() -> {
-            boolean[] valids = DataBase.auth(user, pass);
-            if (!valids[0]) {
-                onError(InputType.USER, "Invalid user");
-                return;
-            } else if (!valids[1]) {
-                onError(InputType.PASSWORD, "Invalid password");
-                return;
-            }
-            view.startMain();
-        }, 2000);
+        AsyncTask.THREAD_POOL_EXECUTOR.execute(() -> {
+            Runnable runnable;
+            if (DataBase.auth(user, pass)) runnable = view::startMain;
+            else runnable = () -> onError("Invalid user or password");
+            activity.runOnUiThread(runnable);
+        });
     }
 
-    private void onError(InputType inputType, String message) {
-        view.onFailure(inputType, message);
+    private void onError(String message) {
+        view.onFailure(message);
         view.progressVisibility(false);
     }
 
@@ -39,5 +35,9 @@ public class LoginPresenter implements ViewContract.Presenter {
     public boolean onCheckEmail(String email) {
         return Pattern.compile("\\w+(\\.\\w+)?@(gmail|hotmail|outlook|hakretcode).com")
                 .matcher(email).matches();
+    }
+
+    @Override
+    public void init(SharedPreferences prefs) {
     }
 }

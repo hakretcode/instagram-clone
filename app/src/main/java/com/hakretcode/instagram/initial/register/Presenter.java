@@ -44,11 +44,9 @@ public class Presenter implements Contract.EmailPresenter, Contract.NamePassPres
 
     @Override
     public void load() {
-        new Handler(Looper.getMainLooper()).postDelayed(() -> {
-            DataBase.add(email, name, pass);
-            if (pressed) welcome.commit();
-            else finish = true;
-        }, 5000);
+        DataBase.add(email, name, pass);
+        if (pressed) welcome.commit();
+        else finish = true;
     }
 
     @Override

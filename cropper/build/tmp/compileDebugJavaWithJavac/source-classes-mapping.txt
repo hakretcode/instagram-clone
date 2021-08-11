@@ -1,0 +1,6 @@
+com/hakretcode/canhub/cropper/BuildConfig.java
+ com.hakretcode.canhub.cropper.BuildConfig
+com/hakretcode/canhub/cropper/databinding/CropImageActivityBinding.java
+ com.hakretcode.canhub.cropper.databinding.CropImageActivityBinding
+com/hakretcode/canhub/cropper/databinding/CropImageViewBinding.java
+ com.hakretcode.canhub.cropper.databinding.CropImageViewBinding

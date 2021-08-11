@@ -1,0 +1,63 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.hakretcode.canhub.cropper" >
+4
+5    <uses-sdk
+6        android:minSdkVersion="25"
+6-->/home/hakretcode/StudioProjects/instagram-clone/cropper/src/main/AndroidManifest.xml
+7        android:targetSdkVersion="30" />
+7-->/home/hakretcode/StudioProjects/instagram-clone/cropper/src/main/AndroidManifest.xml
+8
+9    <queries>
+9-->/home/hakretcode/StudioProjects/instagram-clone/cropper/src/main/AndroidManifest.xml:4:5-13:15
+10        <intent>
+10-->/home/hakretcode/StudioProjects/instagram-clone/cropper/src/main/AndroidManifest.xml:5:9-9:18
+11            <action android:name="android.intent.action.GET_CONTENT" />
+11-->/home/hakretcode/StudioProjects/instagram-clone/cropper/src/main/AndroidManifest.xml:6:13-72
+11-->/home/hakretcode/StudioProjects/instagram-clone/cropper/src/main/AndroidManifest.xml:6:21-69
+12
+13            <category android:name="android.intent.category.OPENABLE" />
+13-->/home/hakretcode/StudioProjects/instagram-clone/cropper/src/main/AndroidManifest.xml:7:13-73
+13-->/home/hakretcode/StudioProjects/instagram-clone/cropper/src/main/AndroidManifest.xml:7:23-70
+14
+15            <data android:mimeType="*/*" />
+15-->/home/hakretcode/StudioProjects/instagram-clone/cropper/src/main/AndroidManifest.xml:8:13-44
+15-->/home/hakretcode/StudioProjects/instagram-clone/cropper/src/main/AndroidManifest.xml:8:19-41
+16        </intent>
+17        <intent>
+17-->/home/hakretcode/StudioProjects/instagram-clone/cropper/src/main/AndroidManifest.xml:10:9-12:18
+18            <action android:name="android.media.action.IMAGE_CAPTURE" />
+18-->/home/hakretcode/StudioProjects/instagram-clone/cropper/src/main/AndroidManifest.xml:11:13-73
+18-->/home/hakretcode/StudioProjects/instagram-clone/cropper/src/main/AndroidManifest.xml:11:21-70
+19        </intent>
+20    </queries>
+21
+22    <application>
+22-->/home/hakretcode/StudioProjects/instagram-clone/cropper/src/main/AndroidManifest.xml:14:5-25:19
+23        <provider
+23-->/home/hakretcode/StudioProjects/instagram-clone/cropper/src/main/AndroidManifest.xml:15:9-23:20
+24            android:name="com.hakretcode.canhub.cropper.CropFileProvider"
+24-->/home/hakretcode/StudioProjects/instagram-clone/cropper/src/main/AndroidManifest.xml:16:13-74
+25            android:authorities="${applicationId}.cropper.fileprovider"
+25-->/home/hakretcode/StudioProjects/instagram-clone/cropper/src/main/AndroidManifest.xml:17:13-72
+26            android:exported="false"
+26-->/home/hakretcode/StudioProjects/instagram-clone/cropper/src/main/AndroidManifest.xml:18:13-37
+27            android:grantUriPermissions="true" >
+27-->/home/hakretcode/StudioProjects/instagram-clone/cropper/src/main/AndroidManifest.xml:19:13-47
+28            <meta-data
+28-->/home/hakretcode/StudioProjects/instagram-clone/cropper/src/main/AndroidManifest.xml:20:13-22:62
+29                android:name="android.support.FILE_PROVIDER_PATHS"
+29-->/home/hakretcode/StudioProjects/instagram-clone/cropper/src/main/AndroidManifest.xml:21:17-67
+30                android:resource="@xml/library_file_paths" />
+30-->/home/hakretcode/StudioProjects/instagram-clone/cropper/src/main/AndroidManifest.xml:22:17-59
+31        </provider>
+32
+33        <activity
+33-->/home/hakretcode/StudioProjects/instagram-clone/cropper/src/main/AndroidManifest.xml:24:9-121
+34            android:name="com.hakretcode.canhub.cropper.CropImageActivity"
+34-->/home/hakretcode/StudioProjects/instagram-clone/cropper/src/main/AndroidManifest.xml:24:19-81
+35            android:theme="@style/Theme.Cropper" />
+35-->/home/hakretcode/StudioProjects/instagram-clone/cropper/src/main/AndroidManifest.xml:24:82-118
+36    </application>
+37
+38</manifest>

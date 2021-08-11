@@ -1,15 +1,10 @@
 package com.hakretcode.instagram.main.profile;
 
 import android.app.Activity;
-import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.graphics.Bitmap;
-import android.graphics.Color;
-import android.net.Uri;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,19 +17,16 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager2.widget.ViewPager2;
 
-import com.canhub.cropper.CropImageContract;
-import com.canhub.cropper.CropImageContractOptions;
-import com.canhub.cropper.CropImageOptions;
 import com.google.android.material.appbar.AppBarLayout;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 import com.google.android.material.textview.MaterialTextView;
+import com.hakretcode.canhub.cropper.CropImageContract;
+import com.hakretcode.canhub.cropper.CropImageContractOptions;
+import com.hakretcode.canhub.cropper.CropImageOptions;
 import com.hakretcode.instagram.R;
 import com.hakretcode.instagram.commons.ExpansiveDialog;
-
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -86,21 +78,13 @@ public class Profile extends Fragment implements Contract.Profile {
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent intent) {
         super.onActivityResult(requestCode, resultCode, intent);
         if (resultCode != Activity.RESULT_OK) return;
-        ContentResolver contentResolver = getContext().getContentResolver();
-        Uri data;
-        if (requestCode == 1)
-            data = Uri.parse(MediaStore.Images.Media.insertImage(contentResolver, (Bitmap) intent
-                    .getExtras().get("data"), "img-"+new SimpleDateFormat("yyyyMMddHHmmss")
-                    .format(new Date(System.currentTimeMillis())), null));
-        else data = intent.getData();
         CropImageOptions cropImageOptions = new CropImageOptions();
         cropImageOptions.activityTitle = "Instagram Clone";
         cropImageOptions.aspectRatioX = 1;
         cropImageOptions.aspectRatioY = 1;
         cropImageOptions.fixAspectRatio = true;
         cropImageOptions.autoZoomEnabled = true;
-        cropImageOptions.activityTitle = "TEsT";
-        launcher.launch(new CropImageContractOptions(data, cropImageOptions));
+        launcher.launch(new CropImageContractOptions(presenter.getImageUri(getContext().getContentResolver(), intent, requestCode), cropImageOptions));
     }
 
     private void findViews(View view) {

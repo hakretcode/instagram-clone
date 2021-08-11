@@ -19,7 +19,7 @@
             android:padding="4dp"
             android:scaleX="2"
             android:scaleY="2"
-            app:srcCompat="@drawable/arrrow_back" />
+            app:srcCompat="@drawable/cropper_arrow_back" />
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"

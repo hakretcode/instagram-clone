@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical">
 
     <include layout="@layout/main_gallery_toolbar" />
@@ -27,13 +27,13 @@
                 <com.google.android.exoplayer2.ui.PlayerView
                     android:id="@+id/video_preview"
                     android:layout_width="0dp"
-                    app:resize_mode="zoom"
                     android:layout_height="0dp"
                     android:visibility="gone"
                     app:layout_constraintDimensionRatio="1:1"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
+                    app:resize_mode="zoom"
                     app:srcCompat="@color/blue_link"
                     app:use_controller="false" />
 
@@ -41,21 +41,21 @@
                     android:id="@+id/image_preview"
                     android:layout_width="0dp"
                     android:layout_height="0dp"
-                    android:visibility="gone"
-                    tools:visibility="visible"
                     android:scaleType="centerCrop"
+                    android:visibility="gone"
                     app:layout_constraintDimensionRatio="1:1"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    tools:srcCompat="@drawable/image_test" />
+                    tools:srcCompat="@drawable/image_test"
+                    tools:visibility="visible" />
 
                 <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/iv_expand"
                     android:layout_width="20dp"
                     android:layout_height="20dp"
                     android:layout_marginStart="16dp"
                     android:layout_marginBottom="16dp"
-                    android:id="@+id/iv_expand"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:srcCompat="@color/black" />

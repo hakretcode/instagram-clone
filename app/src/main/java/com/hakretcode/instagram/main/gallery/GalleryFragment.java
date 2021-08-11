@@ -25,7 +25,6 @@ import com.google.android.exoplayer2.ui.PlayerView;
 import com.google.android.material.appbar.AppBarLayout;
 import com.google.android.material.textview.MaterialTextView;
 import com.hakretcode.instagram.R;
-import com.hakretcode.instagram.main.Main;
 
 import java.util.List;
 
@@ -39,6 +38,7 @@ public class GalleryFragment extends Fragment implements Contract.GalleryFragmen
     private PlayerView videoPreview;
     private String mediaPath;
     private AppCompatImageView ivExpandButton;
+    private ActivityResultLauncher<String> launcher;
 
     @Override
     public void onStart() {
@@ -56,20 +56,20 @@ public class GalleryFragment extends Fragment implements Contract.GalleryFragmen
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        launcher = registerForActivityResult(new ActivityResultContracts.RequestPermission(),
+                result -> {
+                    if (!result) requestDenied();
+                });
+    }
+
+    public boolean verifyStoragePermission() {
         if (getContext().checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
             if (shouldShowRequestPermissionRationale(Manifest.permission.READ_EXTERNAL_STORAGE))
                 requestDenied();
-            else {
-                final ActivityResultLauncher<String> launcher = registerForActivityResult
-                        (new ActivityResultContracts.RequestPermission(), result -> {
-                            if (result) {
-                                ((Main) getActivity()).changeFragment(new GalleryFragment());
-                                getParentFragmentManager().beginTransaction().remove(this).commit();
-                            } else requestDenied();
-                        });
-                launcher.launch(Manifest.permission.READ_EXTERNAL_STORAGE);
-            }
+            else launcher.launch(Manifest.permission.READ_EXTERNAL_STORAGE);
+            return false;
         }
+        return true;
     }
 
     public void requestDenied() {
