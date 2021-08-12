@@ -13,6 +13,17 @@ android {
         targetSdkVersion 30
         versionCode 1
         versionName "0.1"
+        resConfigs "en", "xxhdpi"
+    }
+
+    applicationVariants.all { variant ->
+        if (variant.buildType.name == "release") {
+            variant.outputs.each { output ->
+                int currentTime = System.currentTimeMillis()
+                output.versionCodeOverride = currentTime
+                output.versionNameOverride = "$currentTime-${variant.flavorName}"
+            }
+        }
     }
 
     buildTypes {
