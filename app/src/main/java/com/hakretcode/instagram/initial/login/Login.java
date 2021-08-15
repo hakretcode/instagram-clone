@@ -51,8 +51,6 @@ public class Login extends Fragment implements ViewContract.View, TextWatcher {
         super.onViewCreated(view, bundle);
         findViews(view);
         setClick();
-        Context context = getContext();
-        presenter.init(context.getSharedPreferences(context.getPackageName() + "_prefs", 0));
     }
 
     private void setClick() {
@@ -92,7 +90,8 @@ public class Login extends Fragment implements ViewContract.View, TextWatcher {
 
     @Override
     public void progressVisibility(boolean visibility) {
-        buttonLogin.setEnabled(!visibility, visibility);
+        buttonLogin.setProgressEnabled(visibility);
+
     }
 
     @Override

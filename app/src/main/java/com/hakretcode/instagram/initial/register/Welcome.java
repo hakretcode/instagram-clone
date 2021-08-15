@@ -51,7 +51,7 @@ public class Welcome extends Fragment implements Contract.Welcome {
 
     @Override
     public void setProgressVisibility(boolean visibility) {
-        button.setEnabled(!visibility, visibility);
+        button.setProgressEnabled(visibility);
     }
 
     private void findViews(View view) {

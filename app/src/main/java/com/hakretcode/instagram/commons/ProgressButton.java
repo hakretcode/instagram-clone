@@ -48,8 +48,8 @@ public class ProgressButton extends FrameLayout {
         addView(progressBar);
     }
 
-    public void setEnabled(boolean enabled, boolean showProgress) {
-        setEnabled(enabled);
+    public void setProgressEnabled(boolean showProgress) {
+        setEnabled(!showProgress);
         if (showProgress) {
             text = button.getText();
             button.setText(null);

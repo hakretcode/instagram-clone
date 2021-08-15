@@ -18,8 +18,6 @@ public interface ViewContract {
         void onLogin(Activity activity, String user, String pass);
 
         boolean onCheckEmail(String text);
-
-        void init(SharedPreferences prefs);
     }
 
 }

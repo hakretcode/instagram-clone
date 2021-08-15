@@ -82,11 +82,16 @@ public class RegisterEmail extends Fragment implements Contract.EmailRegister, T
 
     @Override
     public void progressVisibility(boolean visibility) {
-        nextButton.setEnabled(!visibility, visibility);
+        nextButton.setProgressEnabled(visibility);
     }
 
     @Override
     public void next() {
         ((Initial) getActivity()).changeFragment(new RegisterNamePass());
+    }
+
+    @Override
+    public void runOnUiThread(Runnable runnable) {
+        getActivity().runOnUiThread(runnable);
     }
 }
