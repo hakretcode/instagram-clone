@@ -18,17 +18,17 @@ import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 import com.hakretcode.instagram.R;
 import com.hakretcode.instagram.commons.ProgressButton;
-import com.hakretcode.instagram.initial.Initial;
+import com.hakretcode.instagram.initial.InitialActivity;
 
-public class RegisterEmail extends Fragment implements Contract.EmailRegister, TextWatcher {
+public class RegisterEmailFragment extends Fragment implements Contract.EmailView, TextWatcher {
     private final Contract.EmailPresenter presenter;
     private TextInputLayout emailToggle;
     private TextInputEditText inputEmail;
     private ProgressButton nextButton;
-    private FrameLayout login_button;
+    private FrameLayout loginButton;
 
-    public RegisterEmail() {
-        presenter = Presenter.getInstanceFirst(this);
+    public RegisterEmailFragment() {
+        presenter = Presenter.getInstanceEmailView(this);
     }
 
     @Nullable
@@ -46,7 +46,7 @@ public class RegisterEmail extends Fragment implements Contract.EmailRegister, T
 
     private void setClicks() {
         inputEmail.addTextChangedListener(this);
-        login_button.setOnClickListener(v -> getParentFragmentManager().popBackStack());
+        loginButton.setOnClickListener(v -> getParentFragmentManager().popBackStack());
         nextButton.setOnClickListener(v -> presenter.validEmail(inputEmail.getText().toString().toLowerCase()));
     }
 
@@ -54,7 +54,7 @@ public class RegisterEmail extends Fragment implements Contract.EmailRegister, T
         emailToggle = view.findViewById(R.id.email_toggle);
         inputEmail = view.findViewById(R.id.input_email);
         nextButton = view.findViewById(R.id.progress_button);
-        login_button = view.findViewById(R.id.login_btn);
+        loginButton = view.findViewById(R.id.login_btn);
     }
 
     @Override
@@ -81,13 +81,13 @@ public class RegisterEmail extends Fragment implements Contract.EmailRegister, T
     }
 
     @Override
-    public void progressVisibility(boolean visibility) {
-        nextButton.setProgressEnabled(visibility);
+    public void setProgressVisibility(boolean enable) {
+        nextButton.setProgressEnabled(enable);
     }
 
     @Override
     public void next() {
-        ((Initial) getActivity()).changeFragment(new RegisterNamePass());
+        ((InitialActivity) getActivity()).changeFragment(new RegisterNamePassFragment());
     }
 
     @Override

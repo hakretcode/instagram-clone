@@ -14,11 +14,10 @@ public class TextButtonColor {
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
                 button.setTextColor(context.getColor(R.color.blue_pressed));
-                return true;
+                break;
             case MotionEvent.ACTION_CANCEL:
             case MotionEvent.ACTION_UP:
                 button.setTextColor(context.getColor(R.color.blue));
-                break;
         }
         return false;
     }

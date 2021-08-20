@@ -17,7 +17,7 @@ import com.hakretcode.instagram.main.home.Home;
 import com.hakretcode.instagram.main.profile.Profile;
 import com.hakretcode.instagram.main.search.Search;
 
-public class Main extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
+public class MainActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
     private final Fragment home = new Home();
     private final Fragment search = new Search();
     private final Fragment stars = null;

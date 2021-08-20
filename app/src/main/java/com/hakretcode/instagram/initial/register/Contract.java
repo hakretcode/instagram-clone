@@ -1,16 +1,16 @@
 package com.hakretcode.instagram.initial.register;
 
-import android.app.Activity;
-
 public interface Contract {
-    interface EmailRegister {
-        void failure(String error);
-
-        void progressVisibility(boolean progressVisibility);
-
-        void next();
-
+    interface ViewBase {
         void runOnUiThread(Runnable runnable);
+
+        void setProgressVisibility(boolean enable);
+
+        void failure(String error);
+    }
+
+    interface EmailView extends ViewBase {
+        void next();
     }
 
     interface EmailPresenter {
@@ -19,26 +19,31 @@ public interface Contract {
         void validEmail(String email);
     }
 
-    interface NamePassRegister {
+    interface NamePassView {
         void completeRegistration();
 
     }
 
     interface NamePassPresenter {
-        void next(String name, String pass);
+        void onNext(String name, String pass);
     }
 
-    interface Welcome {
-        void commit();
+    interface UsernameView extends ViewBase {
 
-        void setProgressVisibility(boolean visibility);
+        void nextFragment();
+    }
+
+    interface UsernamePresenter {
+        void onNext(String username);
+    }
+
+    interface WelcomeView extends ViewBase {
+        void commit();
     }
 
     interface WelcomePresenter {
-        String getName();
+        String getUsername();
 
-        void load();
-
-        void checkButton();
+        void onFinish();
     }
 }

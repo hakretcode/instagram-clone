@@ -7,11 +7,13 @@ public interface ViewContract {
 
     interface View {
 
-        void onFailure(String errorName);
+        void failure(String errorName);
 
         void progressVisibility(boolean visibility);
 
         void startMain();
+
+        void runOnUiThread(Runnable runnable);
     }
 
     interface Presenter {

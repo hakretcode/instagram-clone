@@ -7,6 +7,9 @@
         <entry key="app/src/main/res/drawable/arrow_back.xml" value="0.21944444444444444" />
         <entry key="app/src/main/res/drawable/arrrow_back.xml" value="0.1203125" />
         <entry key="app/src/main/res/drawable/bg_button_edit.xml" value="0.11145833333333334" />
+        <entry key="app/src/main/res/layout/initial_change_username.xml" value="0.20260416666666667" />
+        <entry key="app/src/main/res/layout/initial_register_email_fragment.xml" value="0.18425925925925926" />
+        <entry key="app/src/main/res/layout/initial_welcome_fragment.xml" value="0.21" />
         <entry key="app/src/main/res/layout/main_activity.xml" value="0.16296296296296298" />
         <entry key="app/src/main/res/layout/main_profile_fragment.xml" value="0.15925925925925927" />
         <entry key="app/src/main/res/layout/main_profile_header.xml" value="0.15925925925925927" />

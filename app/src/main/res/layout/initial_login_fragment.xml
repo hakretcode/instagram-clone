@@ -18,7 +18,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:orientation="vertical"
-            tools:context=".initial.Initial">
+            tools:context=".initial.InitialActivity">
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:layout_width="wrap_content"

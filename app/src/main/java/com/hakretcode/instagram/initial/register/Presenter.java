@@ -7,55 +7,59 @@ import com.hakretcode.instagram.database.DataBase;
 import java.net.ConnectException;
 import java.util.regex.Pattern;
 
-public class Presenter implements Contract.EmailPresenter, Contract.NamePassPresenter, Contract.WelcomePresenter {
+public class Presenter implements Contract.EmailPresenter, Contract.NamePassPresenter, Contract.UsernamePresenter, Contract.WelcomePresenter {
     private static Presenter instance;
-    private Contract.EmailRegister register;
-    private Contract.NamePassRegister namePassRegister;
-    private Contract.Welcome welcome;
+    private Contract.EmailView registerEmailView;
+    private Contract.NamePassView namePassRegisterView;
+    private Contract.UsernameView usernameView;
+    private Contract.WelcomeView welcomeView;
     private String email;
     private String name;
     private String pass;
-    private boolean finish;
-    private boolean pressed;
+    private String username;
 
     private Presenter() {
+
     }
 
-    public static Contract.EmailPresenter getInstanceFirst(Contract.EmailRegister register) {
+    public static Contract.EmailPresenter getInstanceEmailView(Contract.EmailView register) {
         if (instance == null) instance = new Presenter();
-        instance.register = register;
+        instance.registerEmailView = register;
         return instance;
     }
 
-    public static Contract.NamePassPresenter getInstanceSecond(Contract.NamePassRegister register) {
-        instance.namePassRegister = register;
+    public static Contract.NamePassPresenter getInstanceNamePassView(Contract.NamePassView register) {
+        instance.namePassRegisterView = register;
         return instance;
     }
 
-    public static Contract.WelcomePresenter getInstanceWelcome(Contract.Welcome welcome) {
-        instance.welcome = welcome;
+    public static Contract.UsernamePresenter getInstanceUsernameView(Contract.UsernameView username) {
+        instance.usernameView = username;
+        return instance;
+    }
+
+    public static Contract.WelcomePresenter getInstanceWelcomeView(Contract.WelcomeView welcome) {
+        instance.welcomeView = welcome;
         return instance;
     }
 
     @Override
-    public String getName() {
-        return name;
+    public String getUsername() {
+        return username;
     }
 
     @Override
-    public void load() {
-        DataBase.add(email, name, pass);
-        DataBase.auth(email, pass);
-        if (pressed) welcome.commit();
-        else finish = true;
-    }
-
-    @Override
-    public void checkButton() {
-        if (!finish) {
-            welcome.setProgressVisibility(true);
-            pressed = true;
-        } else welcome.commit();
+    public void onFinish() {
+        welcomeView.setProgressVisibility(true);
+        AsyncTask.THREAD_POOL_EXECUTOR.execute(() -> {
+            try {
+                DataBase.add(email, username, name, pass);
+                DataBase.auth(email, pass);
+                welcomeView.commit();
+            } catch (ConnectException e) {
+                welcomeView.failure(e.getMessage());
+            }
+        });
     }
 
     @Override
@@ -66,29 +70,50 @@ public class Presenter implements Contract.EmailPresenter, Contract.NamePassPres
 
     @Override
     public void validEmail(String email) {
-        register.progressVisibility(true);
+        registerEmailView.setProgressVisibility(true);
         AsyncTask.THREAD_POOL_EXECUTOR.execute(() -> {
             String error = null;
             try {
                 if (!DataBase.isEmailAvailableForRegister(email)) error = "This email is already being used";
             } catch (ConnectException e) {
-                error = "Error in the connection";
+                error = e.getMessage();
             }
             final String finalError = error;
-            register.runOnUiThread(() -> {
-                register.progressVisibility(false);
+            registerEmailView.runOnUiThread(() -> {
+                registerEmailView.setProgressVisibility(false);
                 if (finalError == null) {
                     this.email = email;
-                    register.next();
-                } else register.failure(finalError);
+                    registerEmailView.next();
+                } else registerEmailView.failure(finalError);
             });
         });
     }
 
     @Override
-    public void next(String name, String pass) {
+    public void onNext(String name, String pass) {
         this.name = name;
         this.pass = pass;
-        namePassRegister.completeRegistration();
+        namePassRegisterView.completeRegistration();
+    }
+
+    @Override
+    public void onNext(String username) {
+        usernameView.setProgressVisibility(true);
+        AsyncTask.THREAD_POOL_EXECUTOR.execute(() -> {
+            String error = null;
+            try {
+                if (!DataBase.isUserAvailable(username)) error = "This username isn't available. Please try another";
+            } catch (Exception e) {
+                error = e.getMessage();
+            }
+            String finalError = error;
+            usernameView.runOnUiThread(() -> {
+                if (finalError == null) {
+                    this.username = username;
+                    usernameView.nextFragment();
+                } else usernameView.failure(finalError);
+                usernameView.setProgressVisibility(false);
+            });
+        });
     }
 }

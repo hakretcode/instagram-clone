@@ -39,4 +39,6 @@
     <string name="permission_necessary">Storage permission</string>
     <string name="take_a_photo">Take a photo</string>
     <string name="get_from_gallery">Get photo from gallery</string>
+    <string name="username_subtitle">Pick a username for your account. You can always change it later</string>
+    <string name="username">Username</string>
 </resources>

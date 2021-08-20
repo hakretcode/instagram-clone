@@ -18,4 +18,5 @@
     <color name="gray_pressed">#FFAFAFAF</color>
     <color name="gray_border">#FFDBDBDB</color>
     <color name="ic_launcher_background">#FFFFFF</color>
+    <color name="red">#FFED4956</color>
 </resources>

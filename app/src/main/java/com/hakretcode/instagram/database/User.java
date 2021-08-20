@@ -1,15 +1,18 @@
 package com.hakretcode.instagram.database;
 
 public class User {
+    private final String username;
     private final String name;
     private final String email;
-    private final String uid;
 
-    public User(String uid, String name, String email) {
-
-        this.uid = uid;
+    public User(String username, String name, String email) {
+        this.username = username;
         this.name = name;
         this.email = email;
+    }
+
+    public String getUsername() {
+        return username;
     }
 
     public String getName() {
@@ -18,9 +21,5 @@ public class User {
 
     public String getEmail() {
         return email;
-    }
-
-    public String getUid() {
-        return uid;
     }
 }

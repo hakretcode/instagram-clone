@@ -14,16 +14,16 @@ import androidx.fragment.app.Fragment;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
 import com.hakretcode.instagram.R;
-import com.hakretcode.instagram.initial.Initial;
+import com.hakretcode.instagram.initial.InitialActivity;
 
-public class RegisterNamePass extends Fragment implements Contract.NamePassRegister, TextWatcher {
+public class RegisterNamePassFragment extends Fragment implements Contract.NamePassView, TextWatcher {
     private final Contract.NamePassPresenter presenter;
     private MaterialButton button;
     private TextInputEditText inputName;
     private TextInputEditText inputPass;
 
-    public RegisterNamePass() {
-        presenter = Presenter.getInstanceSecond(this);
+    public RegisterNamePassFragment() {
+        presenter = Presenter.getInstanceNamePassView(this);
     }
 
     @Nullable
@@ -36,9 +36,10 @@ public class RegisterNamePass extends Fragment implements Contract.NamePassRegis
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         findViews(view);
+        button.setEnabled(false);
+        button.setOnClickListener(v -> presenter.onNext(inputName.getText().toString(), inputPass.getText().toString()));
         inputName.addTextChangedListener(this);
         inputPass.addTextChangedListener(this);
-        button.setOnClickListener(v -> presenter.next(inputName.getText().toString(), inputPass.getText().toString()));
     }
 
     private void findViews(View view) {
@@ -60,6 +61,6 @@ public class RegisterNamePass extends Fragment implements Contract.NamePassRegis
 
     @Override
     public void completeRegistration() {
-        ((Initial) getActivity()).changeFragment(new Welcome());
+        ((InitialActivity) getActivity()).changeFragment(new UsernameFragment());
     }
 }

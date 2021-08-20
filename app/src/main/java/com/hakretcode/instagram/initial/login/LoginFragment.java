@@ -1,6 +1,5 @@
 package com.hakretcode.instagram.initial.login;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -21,28 +20,26 @@ import com.google.android.material.textfield.TextInputLayout;
 import com.google.android.material.textview.MaterialTextView;
 import com.hakretcode.instagram.R;
 import com.hakretcode.instagram.commons.ProgressButton;
-import com.hakretcode.instagram.initial.Initial;
+import com.hakretcode.instagram.initial.InitialActivity;
 import com.hakretcode.instagram.initial.TextButtonColor;
-import com.hakretcode.instagram.initial.register.RegisterEmail;
-import com.hakretcode.instagram.main.Main;
+import com.hakretcode.instagram.initial.register.RegisterEmailFragment;
+import com.hakretcode.instagram.main.MainActivity;
 
-public class Login extends Fragment implements ViewContract.View, TextWatcher {
+public class LoginFragment extends Fragment implements ViewContract.View, TextWatcher {
     private final ViewContract.Presenter presenter;
     private ProgressButton buttonLogin;
-    private TextInputLayout userToogle;
+    private TextInputLayout userToggle;
     private TextInputEditText inputUser;
-    private TextInputLayout passToogle;
     private TextInputEditText inputPass;
     private MaterialButton textButton;
     private MaterialTextView registerButton;
 
-    public Login() {
+    public LoginFragment() {
         this.presenter = new LoginPresenter(this);
     }
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-
         return inflater.inflate(R.layout.initial_login_fragment, container, false);
     }
 
@@ -50,6 +47,7 @@ public class Login extends Fragment implements ViewContract.View, TextWatcher {
     public void onViewCreated(@NonNull View view, Bundle bundle) {
         super.onViewCreated(view, bundle);
         findViews(view);
+        buttonLogin.setEnabled(false);
         setClick();
     }
 
@@ -59,13 +57,12 @@ public class Login extends Fragment implements ViewContract.View, TextWatcher {
         textButton.setOnTouchListener(TextButtonColor::colorPress);
         buttonLogin.setOnClickListener(v -> presenter.onLogin(getActivity(), inputUser.getText().toString().toLowerCase(),
                 inputPass.getText().toString()));
-        registerButton.setOnClickListener(v -> ((Initial) getActivity()).changeFragment(new RegisterEmail()));
+        registerButton.setOnClickListener(v -> ((InitialActivity) getActivity()).changeFragment(new RegisterEmailFragment()));
     }
 
     private void findViews(View view) {
-        userToogle = view.findViewById(R.id.input_login_toogle);
+        userToggle = view.findViewById(R.id.input_login_toogle);
         inputUser = view.findViewById(R.id.input_login);
-        passToogle = view.findViewById(R.id.input_password_toogle);
         inputPass = view.findViewById(R.id.input_password);
         buttonLogin = view.findViewById(R.id.button_login);
         textButton = view.findViewById(R.id.button_facebook);
@@ -73,16 +70,15 @@ public class Login extends Fragment implements ViewContract.View, TextWatcher {
     }
 
     @Override
-    public void onFailure(String errorName) {
+    public void failure(String errorName) {
         inputPass.setText(null);
         inputUser.setText(null);
-        userToogle.setError(errorName);
+        userToggle.setError(errorName);
         inputUser.setBackgroundResource(R.drawable.bg_input_error);
-        inputUser.setText(null);
         inputPass.setBackgroundResource(R.drawable.bg_input_error);
 
         new Handler(Looper.getMainLooper()).postDelayed(() -> {
-            userToogle.setError(null);
+            userToggle.setError(null);
             inputUser.setBackgroundResource(R.drawable.bg_input);
             inputPass.setBackgroundResource(R.drawable.bg_input);
         }, 5000);
@@ -96,9 +92,14 @@ public class Login extends Fragment implements ViewContract.View, TextWatcher {
 
     @Override
     public void startMain() {
-        Intent intent = new Intent(getContext(), Main.class);
+        Intent intent = new Intent(getContext(), MainActivity.class);
         startActivity(intent);
         getActivity().finish();
+    }
+
+    @Override
+    public void runOnUiThread(Runnable runnable) {
+        getActivity().runOnUiThread(runnable);
     }
 
     @Override
