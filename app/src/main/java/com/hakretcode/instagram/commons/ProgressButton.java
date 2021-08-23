@@ -48,18 +48,6 @@ public class ProgressButton extends FrameLayout {
         addView(progressBar);
     }
 
-    public void setProgressEnabled(boolean showProgress) {
-        setEnabled(!showProgress);
-        if (showProgress) {
-            text = button.getText();
-            button.setText(null);
-            progressBar.setVisibility(VISIBLE);
-        } else {
-            button.setText(text);
-            progressBar.setVisibility(GONE);
-        }
-    }
-
     @Override
     public void setOnClickListener(@Nullable OnClickListener l) {
         button.setOnClickListener(l);
@@ -69,5 +57,16 @@ public class ProgressButton extends FrameLayout {
     public void setEnabled(boolean enabled) {
         super.setEnabled(enabled);
         button.setEnabled(enabled);
+    }
+
+    public void setProgressEnabled(boolean progress) {
+        if (progress) {
+            text = button.getText();
+            button.setText(null);
+            progressBar.setVisibility(VISIBLE);
+        } else {
+            button.setText(text);
+            progressBar.setVisibility(GONE);
+        }
     }
 }

@@ -1,63 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools">
-
-    <com.google.android.material.textview.MaterialTextView
-        android:layout_width="match_parent"
-        android:gravity="center"
-        android:layout_height="32dp"
-        android:visibility="gone"
-        tools:visibility="visible"
-        android:id="@+id/tv_error"
-        android:textColor="@color/white"
-        android:background="@color/red" />
-
-<ScrollView
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-<androidx.appcompat.widget.LinearLayoutCompat  android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_gravity="center"
-    android:orientation="vertical">
 
     <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tv_error"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="28dp"
-        android:layout_marginEnd="28dp"
+        android:layout_height="32dp"
+        android:background="@color/red"
         android:gravity="center"
-        android:text="@string/change_username"
-        android:textStyle="bold" />
+        android:textColor="@color/white"
+        android:visibility="gone"
+        tools:visibility="visible" />
 
-    <com.google.android.material.textview.MaterialTextView
-        style="@style/TextForm"
-        android:text="@string/username_subtitle"
-        android:textSize="@dimen/medium_text" />
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/username_toggle"
-        style="@style/InputLayoutForm"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="28dp">
+        android:layout_height="match_parent">
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/input_username"
-            style="@style/InputForm"
-            android:hint="@string/username"
-            android:inputType="textEmailAddress" />
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="vertical">
 
-    </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="28dp"
+                android:layout_marginEnd="28dp"
+                android:gravity="center"
+                android:text="@string/change_username"
+                android:textStyle="bold" />
 
-    <com.hakretcode.instagram.commons.ProgressButton
-        android:id="@+id/button"
-        style="@style/ButtonForm"
-        android:text="@string/next" />
+            <com.google.android.material.textview.MaterialTextView
+                style="@style/TextForm"
+                android:text="@string/username_subtitle"
+                android:textSize="@dimen/medium_text" />
 
-</androidx.appcompat.widget.LinearLayoutCompat>
-</ScrollView>
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/username_toggle"
+                style="@style/InputLayoutForm"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="28dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="28dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/input_username"
+                    style="@style/InputForm"
+                    android:hint="@string/username"
+                    android:inputType="textEmailAddress" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.hakretcode.instagram.commons.ProgressButton
+                android:id="@+id/button"
+                style="@style/ButtonForm"
+                android:text="@string/next" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+    </ScrollView>
 </RelativeLayout>

@@ -9,7 +9,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.hakretcode.instagram.R;
-import com.hakretcode.instagram.initial.login.LoginFragment;
+import com.hakretcode.instagram.initial.fragment.LoginFragment;
 import com.hakretcode.instagram.main.MainActivity;
 
 public class InitialActivity extends FragmentActivity {

@@ -5,16 +5,16 @@
     android:layout_height="match_parent">
 
     <com.google.android.material.textview.MaterialTextView
-        android:layout_width="0dp"
-        android:gravity="center"
-        android:layout_height="32dp"
-        android:visibility="gone"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         android:id="@+id/tv_error"
+        android:layout_width="0dp"
+        android:layout_height="32dp"
+        android:background="@color/red"
+        android:gravity="center"
         android:textColor="@color/white"
-        android:background="@color/red" />
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="0dp"
